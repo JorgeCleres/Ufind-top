@@ -1,13 +1,14 @@
 <template>
-    <v-app>
-        <div class="my-2">
-            <v-btn :color="color">{{name}}</v-btn>
-        </div>
-    </v-app>
+    <button :type="tipo" :class="classe">{{name}}</button>
 </template>
 
 <script>
     export default {
-        props: ['name','color']
+        props: ['classe','name','tipo']
     }
 </script>
+<style scoped>
+    button {
+        color: white;
+    }
+</style>

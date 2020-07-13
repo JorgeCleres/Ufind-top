@@ -24,6 +24,11 @@ class ProdutoController extends Controller
         $usuario_id = Auth()->id();
         $dados['usuario_id'] = $usuario_id;
 
+        $lat = Auth()->lat();
+        $lng = Auth()->lng();
+        $dados['lat'] = $lat;
+        $dados['lng'] = $lng;
+
         //verifica se tem uma imagem
         if($req->hasFile('imagem')){
             //variavel vai receber a imagem

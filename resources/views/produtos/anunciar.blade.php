@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="tituloAdicEditar">
+        <div class="">
             <p>Anunciar<p>
         </div>
         <div class="col-md-10 col-md-offset-3"> 
@@ -14,9 +14,11 @@
                         @include('produtos._form')
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-2" style="display: block; margin-left: auto;">
-                                <button type="submit" class="btn btn-primary" style="width: 100px; height: 50px">
-                                    Anunciar
-                                </button>
+                                <botao
+                                    tipo="submit"
+                                    classe="btn btn-success"
+                                    name="Anunciar"
+                                ></botao>
                             </div>
                         </div>
                     </div>

@@ -21,10 +21,11 @@ import Vuetify from '../plugins/vuetify'
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('example', require('./components/ExampleComponent.vue').default);
 Vue.component('botao', require('./components/Botao.vue').default);
 Vue.component('border', require('./components/Border.vue').default);
 Vue.component('mapa', require('./components/Mapa.vue').default);
+Vue.component('link-botao', require('./components/LinkBotao.vue').default);
 Vue.component('card-produto', require('./components/CardProduto.vue').default);
 
 import * as VueGoogleMaps from 'vue2-google-maps'
@@ -57,4 +58,7 @@ Vue.use(VueGoogleMaps, {
 const app = new Vue({
     vuetify: Vuetify,
     el: '#app',
+    mounted: function() {
+      document.getElementById('app').style.display = "block";
+    }
 });

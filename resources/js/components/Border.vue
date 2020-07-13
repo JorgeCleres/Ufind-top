@@ -1,6 +1,10 @@
 <template>
-    <div class="border">
-        <slot></slot>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="border">
+                <slot></slot>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -10,9 +14,12 @@
     }
 </script>
 <style scoped>
+    .row {
+        margin-left: 50px;
+    }
     .border {
-        border: 1px solid black;
-        border-radius: 14px;
+        border: 2px solid red !important;
+        border-radius: 8px;
         margin: 15px;
     }
 </style>

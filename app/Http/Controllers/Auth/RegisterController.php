@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -83,5 +84,23 @@ class RegisterController extends Controller
             'uf' =>$data['uf'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        $id = Auth()->id();
+        $rua = Auth()->user()->rua;
+        $num = Auth()->user()->numero;
+        $cidade = Auth()->user()->cidade;
+        $address = $rua."+".$num."+".$cidade;
+        $prepAddress = str_replace(' ','+',$address);
+        $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddress.'&key=AIzaSyAWAkZ64JH2YCr7z6-rhYi13K4Z3uy3Ow0');
+        $output= json_decode($geocode);
+        $lat = $output->results[0]->geometry->location->lat;
+        $lng = $output->results[0]->geometry->location->lng;
+        $dados['lat'] = $lat;
+        $dados['lng'] = $lng;
+
+        User::find($id)->update($dados);
     }
 }

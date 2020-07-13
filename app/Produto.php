@@ -8,5 +8,5 @@ class Produto extends Model
 {
     protected $fillable = [
         'titulo', 'descricao', 'imagem', 'preco', 'usuario_id', 'lat', 'lng'
-    ]
+    ];
 }

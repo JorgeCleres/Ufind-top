@@ -4,19 +4,19 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+        @foreach($registros as $registro)
+            <border>
+                <card-produto
+                    titulo={{$registro->titulo}}
+                    imagem={{$registro->imagem}}
+                    descricao={{$registro->descricao}}
+                    preco={{$registro->preco}}
+                    >
+                    <a href="{{route('produtos.editar',['id' => $registro->id, 'usuario_id'=>$registro->usuario_id])}}" alt="">Editar</a>
+                    <a href="{{route('produtos.deletar',['id' => $registro->id, 'usuario_id'=>$registro->usuario_id])}}" alt="">Deletar</a>
+                </card-produto>
+            </border>
+        @endforeach
         </div>
     </div>
 </div>

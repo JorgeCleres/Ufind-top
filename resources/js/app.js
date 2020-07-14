@@ -26,7 +26,9 @@ Vue.component('botao', require('./components/Botao.vue').default);
 Vue.component('border', require('./components/Border.vue').default);
 Vue.component('mapa', require('./components/Mapa.vue').default);
 Vue.component('link-botao', require('./components/LinkBotao.vue').default);
-Vue.component('card-produto', require('./components/CardProduto.vue').default);
+Vue.component('card-meu-produto', require('./components/CardMeusProduto.vue').default);
+Vue.component('card-anuncio', require('./components/CardAnuncios.vue').default);
+Vue.component('column', require('./components/Column.vue').default);
 
 import * as VueGoogleMaps from 'vue2-google-maps'
  

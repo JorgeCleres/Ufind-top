@@ -2,17 +2,20 @@
 
 @section('content')
     <div class="container">
-    <example></example>
-        <border>
         @foreach($registros as $registro)
-            <card-produto
-                titulo={{$registro->titulo}}
-                imagem={{$registro->imagem}}
-                descricao={{$registro->descricao}}
-                preco={{$registro->preco}}
+            <border>
+                <column
+                    classe="col-2"
                 >
-            </card-produto>
+                    <card-anuncio
+                        titulo={{$registro->titulo}}
+                        imagem={{$registro->imagem}}
+                        descricao={{$registro->descricao}}
+                        preco={{$registro->preco}}
+                        >
+                    </card-anuncio>
+                </column>
+            </border>
         @endforeach
-        </border>
     </div>
 @endsection

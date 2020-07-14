@@ -1,21 +1,19 @@
-<div class="form-group col-md-8">
-        <input type="text" name="titulo" value="{{isset($registro->titulo) ? $registro->titulo : ''}}" class="form-control" placeholder="Titulo"/>
-    </div>
+<div class="col-md-12 mb-2">
+    <label>Titulo</label>
+    <input type="text" name="titulo" value="{{isset($registro->titulo) ? $registro->titulo : ''}}" class="form-control" required />
 </div>
 
-    <div class="form-row">
-        <div class="form-group col-md-8">
-            <input type="text" name="descricao" value="{{isset($registro->descricao) ? $registro->descricao : ''}}" class="form-control" placeholder="Descrição"/>
-        </div>
+    <div class="col-md-12 mb-2">
+        <label>Descrição</label>
+        <input type="text" name="descricao" value="{{isset($registro->descricao) ? $registro->descricao : ''}}" class="form-control" required />
     </div>
 
-    <div class="form-row">
-      <div class="form-group col-md-2">
-          <input type="text" name="preco" id="preco" value="{{isset($registro->preco) ? $registro->preco : ''}}" class="form-control" placeholder="Preço"/>
-        </div>
+    <div class="col-md-12 mb-2">
+        <label>Preço</label>
+        <input type="text" name="preco" id="preco" value="{{isset($registro->preco) ? $registro->preco : ''}}" class="form-control" required />
     </div>
 
-    <div class="form-group">
+    <div class="col-md-12 mb-2">
       <input type="file" class="form-control-file" name="imagem">
     </div>
     @if(isset($registro->imagem))
@@ -23,6 +21,7 @@
         <img style="width:150px" src="{{asset($registro->imagem)}}"/>
     </div>
     @endif
+</div>
 <script>
 
     var mask = {

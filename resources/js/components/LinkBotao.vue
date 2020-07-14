@@ -1,10 +1,16 @@
 <template>
-    <a :href="href" :class="classe" role="button" aria-pressed="true">{{name}}</a>
+    <a :href="href" :class="classe" role="button">{{name}}</a>
 </template>
 
 <script>
     export default {
-        props: ['classe','name','href']
+        props: ['classe','name','href','alerta'],
+        methods: {
+            deletar() {
+                alert("olá");
+            }
+        }
+        
     }
 </script>
 

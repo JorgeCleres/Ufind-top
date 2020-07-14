@@ -18,8 +18,8 @@
         margin-left: 50px;
     }
     .border {
-        border: 2px solid red !important;
-        border-radius: 8px;
-        margin: 15px;
+        border: 2px solid black;
+        border-radius: 14px;
+        margin: 1px;
     }
 </style>

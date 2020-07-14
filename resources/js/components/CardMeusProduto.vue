@@ -7,7 +7,7 @@
             <div class="col-md-6 position-static p-4 pl-md-0">
                 <h5 class="mt-0">{{titulo}}</h5>
                 <p>{{descricao}}</p>
-                <p class="stretched-link"><spam>$ </spam>{{preco}}</p>
+                <p class=""><spam>$ </spam>{{preco}}</p>
                 <slot></slot>
             </div>
         </div>

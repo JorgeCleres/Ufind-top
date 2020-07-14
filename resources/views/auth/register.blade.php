@@ -52,7 +52,7 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="rua" name="rua" pattern="^[ a-zA-Z]+$" required placeholder="Rua dos Bobos, nº 0">
+                                <input type="text" class="form-control" id="rua" name="rua" required placeholder="Rua dos Bobos, nº 0">
                             </div>
                             <div class="form-group col-md-1">
                                 <input type="text" class="form-control" id="numero"  name="numero" pattern="^[a-zA-Z 0-9]+$" required placeholder="nº 0">

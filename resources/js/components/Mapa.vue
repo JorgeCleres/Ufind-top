@@ -94,6 +94,6 @@
 
 <style scoped>
 .mapa{
-        margin: 20px 50px;
+        margin: 100px 50px;
     }
 </style>

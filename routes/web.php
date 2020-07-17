@@ -18,7 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(['auth'])->group(function(){
+    Route::resource('produtos', 'ProdutoController');
+});
+
 Route::get('/anuncios',['as'=>'anuncios','uses'=>'AnuncioController@index']);
+Route::get('/anuncios/info/{id}',['as'=>'anuncios.info','uses'=>'AnuncioController@info']);
+
 Route::get('/produtos',['as'=>'produtos','uses'=>'ProdutoController@index']);
 Route::get('/anunciar', ['as'=>'produtos.anunciar','uses'=>'ProdutoController@anunciar']);
 Route::post('/produtos/salvar',['as'=>'produtos.salvar','uses'=>'ProdutoController@salvar']);

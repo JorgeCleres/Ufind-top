@@ -9,6 +9,21 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import Vuetify from '../plugins/vuetify'
+import Vuex from 'Vuex';
+Vue.use(Vuex);
+
+
+//Vuex
+const store = new Vuex.Store({
+  state:{
+    item:{}
+  },
+  mutations:{
+    setItem(state,obj){
+      state.item = obj;
+    }
+  }
+})
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,6 +44,11 @@ Vue.component('link-botao', require('./components/LinkBotao.vue').default);
 Vue.component('card-meu-produto', require('./components/CardMeusProduto.vue').default);
 Vue.component('card-anuncio', require('./components/CardAnuncios.vue').default);
 Vue.component('column', require('./components/Column.vue').default);
+Vue.component('formulario', require('./components/Formulario.vue').default);
+Vue.component('modal', require('./components/modal/Modal.vue').default);
+Vue.component('modal-link', require('./components/modal/ModalLink.vue').default);
+Vue.component('label-form', require('./components/LabelForm.vue').default);
+Vue.component('menu-nav', require('./components/MenuNav.vue').default);
 
 import * as VueGoogleMaps from 'vue2-google-maps'
  
@@ -57,9 +77,16 @@ Vue.use(VueGoogleMaps, {
   // installComponents: true,
 })
 
+
+    function limite(){
+        alert("olá")
+    }
+
+
 const app = new Vue({
     vuetify: Vuetify,
     el: '#app',
+    store,
     mounted: function() {
       document.getElementById('app').style.display = "block";
     }

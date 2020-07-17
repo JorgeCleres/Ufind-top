@@ -2,27 +2,118 @@
 
 @section('content')
 <div class="container">
-    @foreach($registros as $registro)
-        <border>
-            <card-meu-produto
-                titulo={{$registro->titulo}}
-                imagem={{$registro->imagem}}
-                descricao={{$registro->descricao}}
-                preco={{$registro->preco}}
-                >
-                <link-botao
-                    classe="btn btn-primary btn-lg active"
-                    href="{{route('produtos.editar',['id' => $registro->id, 'usuario_id'=>$registro->usuario_id])}}"
-                    name="Editar"
-                ></link-botao>
-                <link-botao
-                    onclick="return confirm('Deseja mesmo Excluir?');"
-                    classe="btn btn-danger btn-lg active"
-                    href="{{route('produtos.deletar',['id' => $registro->id, 'usuario_id'=>$registro->usuario_id])}}"
-                    name="Deletar"
-                ></link-botao>
-            </card-meu-produto>
-        </border>
-    @endforeach
+
+    @if($errors->all())
+        @foreach($errors->all() as $key => $value)
+        <li>{{$value}}</li>
+        @endforeach
+    @endif
+    
+    <card-meu-produto
+        v-bind:itens="{{json_encode($registros)}}"
+        editar="/produtos/"
+        deletar="/produtos/"
+        detalhe="/produtos/"
+        token="{{ csrf_token() }}"
+        modal="sim"
+        >
+    </card-meu-produto>
+
+    <modal
+        nome="adicionar"
+        classe="modal-dialog modal-lg"
+        titulo="adicionar">
+        <formulario
+            css=""
+            action="{{route('produtos.salvar')}}"
+            method="post"
+            enctype="multipart/form-data"
+            token="{{ csrf_token() }}"
+            id="formAdicionar"
+        >
+            <div class="col-md-12 mb-2">
+                <label>Titulo</label>
+                <input type="text" name="titulo" class="form-control" value="{{old('titulo')}}" />
+            </div>
+
+            <div class="col-md-12 mb-2">
+                <label>Descrição</label>
+                <textarea type="text" name="descricao" class="form-control" onclick="limite()" >{{old('descricao')}}</textarea>
+            </div>
+
+            <div class="col-md-12 mb-2">
+                <label>Preço</label>
+                <input type="text" name="preco" id="preco" class="form-control" value="{{old('preco')}}" />
+            </div>
+
+            <div class="col-md-12 mb-2">
+                <input type="file" class="form-control-file" name="imagem">
+            </div>
+
+            <div class="imagem">
+                <img style="width:100px; margin: 0 15px" :src="$store.state.item.imagem"/>
+            </div>
+    
+        </formulario>
+        <span slot="botoes">
+            <button form="formAdicionar" class="btn btn-primary">Anunciar</button>
+        </span>
+    </modal>
+
+    <modal
+        nome="editar"
+        classe="modal-dialog modal-lg"
+        titulo="Editar">
+        <formulario
+            css=""
+            :action="'/produtos/' + $store.state.item.id"
+            method="put"
+            enctype="multipart/form-data"
+            token="{{ csrf_token() }}"
+            id="formEditar"
+        >
+            <div class="col-md-12 mb-2">
+                <label-form name="Titulo"></label-form>
+                <input type="text" name="titulo" id="titulo" v-model="$store.state.item.titulo" class="form-control" />
+            </div>
+
+            <div class="col-md-12 mb-2">
+            <label-form name="Descrição"></label-form>
+                <textarea type="text" name="descricao" id="descricao" class="form-control" v-model="$store.state.item.descricao"></textarea>
+            </div>
+
+            <div class="col-md-12 mb-2">
+            <label-form name="Preço"></label-form>
+                <input type="text" name="preco" id="preco" v-model="$store.state.item.preco" class="form-control" />
+            </div>
+            
+            <div class="col-md-12 mb-4">
+                <input type="file" class="form-control-file" name="imagem">
+            </div>
+
+            <div class="imagem">
+                <img style="width:100px; margin: 0 15px" :src="$store.state.item.imagem"/>
+            </div>
+
+        </formulario>
+        <span slot="botoes">
+            <button form="formEditar" class="btn btn-primary btn-lg">Salvar</button>
+        </span>
+
+    </modal>
+
+    <modal
+        nome="detalhe"
+        titulo="detalhe"
+        classe="modal-dialog modal-lg">
+        
+            <p>@{{$store.state.item.titulo}}<p>
+            <p>@{{$store.state.item.descricao}}<p>
+            <p>@{{$store.state.item.preco}}<p>
+            <img style="width:250px" :src="$store.state.item.imagem"/>
+        
+    </modal>
+    
 </div>
+
 @endsection

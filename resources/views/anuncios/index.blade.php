@@ -25,6 +25,9 @@
                     <h5 class="card-title"><strong>@{{$store.state.item.titulo}}</strong></h5>
                     <p class="card-text">@{{$store.state.item.descricao}}</p>
                     <p class="card-text"><span>$ </span>@{{$store.state.item.preco}}</p>
+                    <a class="btn btn-primary" href="{{ route('chatify') }}" role="button">Chat</a>
+
+                    
                 </div>
                 </div>
             </div>

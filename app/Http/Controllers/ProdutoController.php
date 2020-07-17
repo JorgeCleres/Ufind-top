@@ -28,10 +28,6 @@ class ProdutoController extends Controller
     {
         
         $dados = $req->all();
-        
-        for ($i = 0; $i < count($req->allFiles()['imagem']); $i++){
-            dd($i);
-        }
 
         $dados = $req->all();
         $validacao = \Validator::make($dados,[

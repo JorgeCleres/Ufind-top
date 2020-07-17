@@ -1,20 +1,20 @@
 <div class="col-md-12 mb-2">
     <label>Titulo</label>
-    <input type="text" name="titulo" value="{{isset($registro->titulo) ? $registro->titulo : ''}}" class="form-control" required />
+    <input type="text" name="titulo" class="form-control" required />
 </div>
 
     <div class="col-md-12 mb-2">
         <label>Descrição</label>
-        <input type="text" name="descricao" value="{{isset($registro->descricao) ? $registro->descricao : ''}}" class="form-control" required />
+        <input type="text" name="descricao" class="form-control" required />
     </div>
 
     <div class="col-md-12 mb-2">
         <label>Preço</label>
-        <input type="text" name="preco" id="preco" value="{{isset($registro->preco) ? $registro->preco : ''}}" class="form-control" required />
+        <input type="text" name="preco" id="preco" class="form-control" required />
     </div>
 
     <div class="col-md-12 mb-2">
-      <input type="file" class="form-control-file" name="imagem">
+      <input type="file" class="form-control-file" multiple="multiple" name="imagem">
     </div>
     @if(isset($registro->imagem))
     <div class="imagem">

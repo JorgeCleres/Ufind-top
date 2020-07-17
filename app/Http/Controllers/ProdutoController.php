@@ -9,8 +9,9 @@ class ProdutoController extends Controller
 {
     public function index()
     {
-        $usuario_id = Auth()->id();
-        $registros = Produto::where('usuario_id','=', $usuario_id)->get();
+        $id = Auth()->id();
+        $registros = Produto::where('usuario_id','=', $id)->get();
+        //$registros = Produto::all();
         return view('produtos.index',compact('registros'));
     }
 
@@ -18,9 +19,33 @@ class ProdutoController extends Controller
         return view('produtos.anunciar');
     }
 
+    public function show($id)
+    {
+        return Produto::find($id);
+    }
+
     public function salvar(Request $req)
     {
+        
         $dados = $req->all();
+        
+        for ($i = 0; $i < count($req->allFiles()['imagem']); $i++){
+            dd($i);
+        }
+
+        $dados = $req->all();
+        $validacao = \Validator::make($dados,[
+            "titulo" => "required",
+            "descricao" => "required",
+            "preco" => "required",
+            "imagem" => "required"
+            
+        ]);
+
+        if($validacao->fails()){
+            return redirect()->back()->withErrors($validacao)->withInput();
+        }
+
         $usuario_id = Auth()->id();
         $dados['usuario_id'] = $usuario_id;
 
@@ -46,6 +71,7 @@ class ProdutoController extends Controller
         Produto::create($dados);
 
         return redirect()->route('produtos');
+
     }
 
     public function editar($id, $usuario)
@@ -61,9 +87,23 @@ class ProdutoController extends Controller
         }
     }
 
-    public function atualizar(Request $req, $id)
+    public function update (Request $req, $id)
     {
         $dados = $req->all();
+        $validacao = \Validator::make($dados,[
+            "titulo" => "required",
+            "descricao" => "required",
+            "preco" => "required",
+            "imagem" => "required"
+            
+        ]);
+
+        if($validacao->fails()){
+            return redirect()->back()->withErrors($validacao)->withInput();
+        }
+
+        $usuario_id = Auth()->id();
+        $dados['usuario_id'] = $usuario_id;
 
         //verifica se tem uma imagem
         if($req->hasFile('imagem')){
@@ -87,8 +127,8 @@ class ProdutoController extends Controller
         Produto::find($id)->update($dados);
 
         return redirect()->route('produtos');
-
     }
+
 
     public function deletar($id, $usuario)
     {
@@ -102,5 +142,11 @@ class ProdutoController extends Controller
         }
         return redirect()->route('produtos');
         
+    }
+
+    public function destroy($id)
+    {
+        Produto::find($id)->delete();
+        return redirect()->route('produtos');
     }
 }

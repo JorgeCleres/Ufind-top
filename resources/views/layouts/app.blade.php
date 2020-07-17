@@ -51,6 +51,7 @@
                             <li class="nav-item">
                                 <a href="{{route('anuncios')}}" class="nav-link">Anuncios</a>
                             </li>
+                            
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <span>Olá </span>{{ Auth::user()->name }} <span class="caret"></span>
@@ -58,6 +59,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('produtos') }}">Meus produtos</a>
+                                    <a class="dropdown-item" href="{{ route('chatify') }}">Chat</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

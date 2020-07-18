@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
+use App\ImagemProduto;
+use App\User;
 
 class ProdutoController extends Controller
 {
@@ -16,8 +18,9 @@ class ProdutoController extends Controller
     {
         $id = Auth()->id();
         $registros = Produto::where('usuario_id','=', $id)->get();
-        //$registros = Produto::all();
-        return view('produtos.index',compact('registros'));
+        //$imagens = ImagemProduto::where('produto_id','=','id')->get();
+        $imagens = ImagemProduto::all();
+        return view('produtos.index',compact('registros', 'imagens'));
     }
 
     public function anunciar() {
@@ -33,8 +36,9 @@ class ProdutoController extends Controller
     {
         
         $dados = $req->all();
+        $req->all();
 
-        $dados = $req->all();
+        /*
         $validacao = \Validator::make($dados,[
             "titulo" => "required",
             "descricao" => "required",
@@ -46,10 +50,11 @@ class ProdutoController extends Controller
         if($validacao->fails()){
             return redirect()->back()->withErrors($validacao)->withInput();
         }
-
+*/
         $usuario_id = Auth()->id();
         $dados['usuario_id'] = $usuario_id;
 
+/*
         //verifica se tem uma imagem
         if($req->hasFile('imagem')){
             //variavel vai receber a imagem
@@ -68,8 +73,37 @@ class ProdutoController extends Controller
             //salvando no banco de dados
             $dados['imagem'] = $dir."/".$nomeImagem;
         }
+*/
 
-        Produto::create($dados);
+        ///dd($req->all());
+
+        $produto = new Produto();
+        $produto->titulo = $req->titulo;
+        $produto->descricao = $req->descricao;
+        $produto->preco = $req->preco;
+        $produto->usuario_id = $usuario_id;
+        $produto->save();
+
+        for($i = 0; $i < (count($req->allFiles()['imagem'])); $i++){
+           
+            $file = $req->allFiles()['imagem'][$i];
+
+            $productImage = new ImagemProduto();
+            //salvando o id do produto na tabela imagemProduto na campo produto_id
+            $productImage->produto_id = $produto->id;
+            //$productImage->foto = $file->store('produtos');
+            $dir = "img/produtos/";
+            $numRand = rand(1111,9999);
+            $extensaoImage = $file->guessClientExtension();
+            $nomeImagem = "imagem_".$numRand.".".$extensaoImage;
+            $productImage->foto = $file->move($dir, $nomeImagem);
+            $productImage->save();
+            unset($productImage);
+
+        }
+
+
+        //Produto::create($dados);
 
         return redirect()->route('produtos');
 

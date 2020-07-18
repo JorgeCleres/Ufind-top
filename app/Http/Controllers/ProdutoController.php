@@ -7,6 +7,11 @@ use App\Produto;
 
 class ProdutoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('verified');
+    }
     public function index()
     {
         $id = Auth()->id();

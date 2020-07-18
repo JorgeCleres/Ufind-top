@@ -7,6 +7,10 @@ use App\Produto;
 
 class AnuncioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('verified');
+    }
     public function index()
     {
         $registros = Produto::all();

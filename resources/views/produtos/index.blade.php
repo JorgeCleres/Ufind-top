@@ -9,6 +9,10 @@
         @endforeach
     @endif
     
+    <example
+        :itens="{{json_encode($imagens)}}"
+    ></example>
+
     <card-meu-produto
         v-bind:itens="{{json_encode($registros)}}"
         editar="/produtos/"

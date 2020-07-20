@@ -79,21 +79,21 @@
         >
             <div class="col-md-12 mb-2">
                 <label-form name="Titulo"></label-form>
-                <input type="text" name="titulo" id="titulo" v-model="$store.state.item.titulo" class="form-control" maxlength="30"/>
+                <input type="text" name="titulo" id="titulo" v-model="$store.state.item.titulo" class="form-control" maxlength="30"  required/>
             </div>
 
             <div class="col-md-12 mb-2">
             <label-form name="Descrição"></label-form>
-                <textarea type="text" name="descricao" id="descricao" class="form-control" v-model="$store.state.item.descricao" maxlength="200"></textarea>
+                <textarea type="text" name="descricao" id="descricao" class="form-control" v-model="$store.state.item.descricao" maxlength="200" required></textarea>
             </div>
 
             <div class="col-md-12 mb-2">
             <label-form name="Preço"></label-form>
-                <input type="text" name="preco" id="preco" v-model="$store.state.item.preco" class="form-control" maxlength="15" />
+                <input type="text" name="preco" id="preco" v-model="$store.state.item.preco" class="form-control" maxlength="15" required/>
             </div>
             
             <div class="col-md-12 mb-4">
-                <input type="file" class="form-control-file" name="imagem[]" multiple="multiple" id="addFotoGaleria">
+                <input type="file" class="form-control-file" name="imagem[]" multiple="multiple" id="addFotoGaleria" required>
             </div>
 
             <div class="imagem">

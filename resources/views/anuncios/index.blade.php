@@ -26,7 +26,6 @@
                     <p class="card-text">@{{$store.state.item.descricao}}</p>
                     <p class="card-text"><span>$ </span>@{{$store.state.item.preco}}</p>
                     <a class="btn btn-primary" href="{{ route('chatify') }}" role="button">Chat</a>
-
                     <whats
                         :itens="{{json_encode($user)}}"
                     ></whats>
@@ -34,7 +33,7 @@
                 </div>
             </div>
         </div>
-
+    </modal>
         
         
 </div>

@@ -1,7 +1,9 @@
 <template>
     <div class="card-deck">
         <div class="card" v-for="(item, index) in itens" :key="index">
-            <img  :src="item['imagem']" class="card-img-top" alt="imagem não carregou corretamente" style="width:220px">
+            
+          <!--  <img  :src="item['imagem']" class="card-img-top" alt="imagem não carregou corretamente" style="width:220px"> -->
+
             <div class="card-body">
                 <h5 class="card-title">{{item['titulo']}}</h5>
                 <p class="card-text">{{item['descricao']}}</p>

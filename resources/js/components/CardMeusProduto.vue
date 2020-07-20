@@ -7,7 +7,11 @@
         <div class="card mb-3" style="max-width: 940px;" v-for="(item, index) in itens" :key="index">
             <div class="row no-gutters">
                 <div class="col-md-3">
-                    <img v-bind:src="item['imagem']" class="card-img" alt="...">
+
+                    <slot></slot>
+                    <!--<img v-bind:src="item['imagem']" class="card-img" alt="...">-->
+
+
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">

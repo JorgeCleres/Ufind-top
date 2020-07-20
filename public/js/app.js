@@ -3237,6 +3237,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['itens', 'detalhe', 'modal']
 });
@@ -3252,6 +3254,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -3344,8 +3350,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -40909,15 +40913,6 @@ var render = function() {
     { staticClass: "card-deck" },
     _vm._l(_vm.itens, function(item, index) {
       return _c("div", { key: index, staticClass: "card" }, [
-        _c("img", {
-          staticClass: "card-img-top",
-          staticStyle: { width: "220px" },
-          attrs: {
-            src: item["imagem"],
-            alt: "imagem não carregou corretamente"
-          }
-        }),
-        _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("h5", { staticClass: "card-title" }, [
             _vm._v(_vm._s(item["titulo"]))
@@ -41006,12 +41001,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "row no-gutters" }, [
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("img", {
-                  staticClass: "card-img",
-                  attrs: { src: item["imagem"], alt: "..." }
-                })
-              ]),
+              _c("div", { staticClass: "col-md-3" }, [_vm._t("default")], 2),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-8" }, [
                 _c("div", { staticClass: "card-body" }, [
@@ -41175,9 +41165,7 @@ var render = function() {
           attrs: { src: item["foto"], alt: "imagem não carregou corretamente" }
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("p", {}, [_vm._v(_vm._s(item["produto_id"]))])
-        ])
+        _c("div", { staticClass: "card-body" })
       ])
     }),
     0

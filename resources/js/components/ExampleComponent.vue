@@ -2,9 +2,7 @@
     <div class="card-deck">
         <div class="card" v-for="(item, index) in itens" :key="index">
             <img  :src="item['foto']" class="card-img-top" alt="imagem não carregou corretamente" style="width:220px">
-            <div class="card-body">
-                <p class="">{{item['produto_id']}}</p>
-                
+            <div class="card-body">            
             </div>
         </div>
     </div>

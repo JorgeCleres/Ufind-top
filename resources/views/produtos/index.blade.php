@@ -9,20 +9,21 @@
         @endforeach
     @endif
     
-    <example
-        :itens="{{json_encode($imagens)}}"
-    ></example>
+    
 
     <card-meu-produto
         v-bind:itens="{{json_encode($registros)}}"
         editar="/produtos/"
         deletar="/produtos/"
-        detalhe="/produtos/"
         token="{{ csrf_token() }}"
         modal="sim"
         >
+        <example
+            :itens="{{json_encode($imagens)}}"
+        ></example>
     </card-meu-produto>
 
+<!--
     <modal
         nome="adicionar"
         classe="modal-dialog modal-lg"
@@ -63,7 +64,7 @@
             <button form="formAdicionar" class="btn btn-primary">Anunciar</button>
         </span>
     </modal>
-
+-->
     <modal
         nome="editar"
         classe="modal-dialog modal-lg"
@@ -78,25 +79,26 @@
         >
             <div class="col-md-12 mb-2">
                 <label-form name="Titulo"></label-form>
-                <input type="text" name="titulo" id="titulo" v-model="$store.state.item.titulo" class="form-control" />
+                <input type="text" name="titulo" id="titulo" v-model="$store.state.item.titulo" class="form-control" maxlength="30"/>
             </div>
 
             <div class="col-md-12 mb-2">
             <label-form name="Descrição"></label-form>
-                <textarea type="text" name="descricao" id="descricao" class="form-control" v-model="$store.state.item.descricao"></textarea>
+                <textarea type="text" name="descricao" id="descricao" class="form-control" v-model="$store.state.item.descricao" maxlength="200"></textarea>
             </div>
 
             <div class="col-md-12 mb-2">
             <label-form name="Preço"></label-form>
-                <input type="text" name="preco" id="preco" v-model="$store.state.item.preco" class="form-control" />
+                <input type="text" name="preco" id="preco" v-model="$store.state.item.preco" class="form-control" maxlength="15" />
             </div>
             
             <div class="col-md-12 mb-4">
-                <input type="file" class="form-control-file" name="imagem">
+                <input type="file" class="form-control-file" name="imagem[]" multiple="multiple" id="addFotoGaleria">
             </div>
 
             <div class="imagem">
                 <img style="width:100px; margin: 0 15px" :src="$store.state.item.imagem"/>
+                <div class="galeria"></div>
             </div>
 
         </formulario>

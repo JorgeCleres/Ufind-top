@@ -57,9 +57,9 @@ class ResetPassword extends Notification
         }
 
         return (new MailMessage)
-    ->subject(Lang::get('Email de recuperação de senha.'))
-            ->line(Lang::get('Você solicitou esse e-mail pois esqueceu sua senha.'))
-            ->action(Lang::get('Resetar Senha'), url(route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
+    ->subject(Lang::get('Redefinição de senha.'))
+            ->line(Lang::get('Você solicitou esse e-mail pois deseja redefinir sua senha.'))
+            ->action(Lang::get('Redefinir Senha'), url(route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
             ->line(Lang::get('Esse link expira em :count minutos.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
             ->line(Lang::get('Caso você não tenha feito essa solicitação, favor desconsiderar essa mensagem.'));
     }

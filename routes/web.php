@@ -32,3 +32,5 @@ Route::post('/produtos/salvar',['as'=>'produtos.salvar','uses'=>'ProdutoControll
 Route::get('/produtos/editar/{id}/{usuario_id}',['as'=>'produtos.editar','uses'=>'ProdutoController@editar']);
 Route::put('/produtos/atualizar/{id}',['as'=>'produtos.atualizar','uses'=>'ProdutoController@atualizar']);
 Route::get('/produtos/deletar/{id}/{usuario_id}',['as'=>'produtos.deletar','uses'=>'ProdutoController@deletar']);
+Route::get('/editarusuario',['as'=>'editarusuario','uses'=>'EditarUserController@index']);
+Route::put('/editarusuario/update/{id}',['as'=>'editarusuario.update','uses'=>'EditarUserController@update']);

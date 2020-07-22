@@ -12,57 +12,51 @@
                         @csrf
                         <input type="hidden" name="_method" value="put"></inpunt>
                         
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nome">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" name="tel" id="tel" required placeholder="Telefone" pattern="^[0-9]+$" maxlength="11" />
+                                </div>
+                            </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" id="cep" name="cep" size="10" maxlength="9" onblur="pesquisacep(this.value);" pattern="^[0-9]+$" required placeholder="CEP"/>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" id="rua" name="rua" required placeholder="Rua dos Bobos, nº 0" readonly>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" id="numero"  name="numero" pattern="^[a-zA-Z 0-9]+$" required placeholder="nº 0">
+                                </div>
+                            </div>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" id="cidade" name="cidade" pattern="^[ a-zA-Z]+$" required placeholder="Cidade" readonly>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control"  id="uf" name="uf" pattern="^[ a-zA-Z]+$" required placeholder="Estado" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="bairro" name="bairro" pattern="^[ a-zA-Z]+$" required placeholder="Bairro" readonly>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="tel" id="tel" required placeholder="Telefone" pattern="^[0-9]+$" maxlength="11" />
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <input type="text" class="form-control" id="cep" name="cep" size="10" maxlength="9" onblur="pesquisacep(this.value);" pattern="^[0-9]+$" required placeholder="CEP"/>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="rua" name="rua" required placeholder="Rua dos Bobos, nº 0">
-                            </div>
-                            <div class="form-group col-md-1">
-                                <input type="text" class="form-control" id="numero"  name="numero" pattern="^[a-zA-Z 0-9]+$" required placeholder="nº 0">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <input type="text" class="form-control" id="cidade" name="cidade" pattern="^[ a-zA-Z]+$" required placeholder="Cidade">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input type="text" class="form-control"  id="uf" name="uf" pattern="^[ a-zA-Z]+$" required placeholder="Estado">
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" id="bairro" name="bairro" pattern="^[ a-zA-Z]+$" required placeholder="Bairro">
-                            </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                         Salvar
-                                </button>
+                            <div class="form-row">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Salvar') }}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>

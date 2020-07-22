@@ -46,6 +46,11 @@ class MessagesController extends Controller
         return new Response('Unauthorized', 401);
     }
 
+    public function teste($id)
+    {
+        return "ola";
+    }
+
     /**
      * Returning the view of the app with the required data.
      *

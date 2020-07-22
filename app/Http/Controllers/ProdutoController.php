@@ -17,14 +17,19 @@ class ProdutoController extends Controller
     {
         $id = Auth()->id();
         $registros = Produto::where('usuario_id','=', $id)->get();
-        //$imagens = ImagemProduto::where('produto_id','=','produto_id')->get();
-        $imagens = ImagemProduto::select('*')->where('produto_id','=', 'produto_id')->get();
-        //$imagens = ImagemProduto::all();
-        //$imagens = ImagemProduto::where('produto_id','=','produto_id')->get();
-        return view('produtos.index',compact('registros', 'imagens'));
+        $produto_id = Produto::where('usuario_id','=', $id)->get();
+        //$imagens = ImagemProduto::where('produto_id','=','id')->get();
+        $imagens = ImagemProduto::all();
+        //$imagens = ImagemProduto::select('foto')->count('produto_id').('imagem_produtos')->groupBy('produto_id')->havingRaw(count(produto_id > 1);
+        //select foto, count(produto_id) from imagem_produtos group by produto_id having count(produto_id) > 1;
+        //$imagens = ImagemProduto::select('select foto from imagem_produtos group by produto_id having(count(produto_id) > 1');
+        //$imagens = ImagemProduto::groupBy('produto_id')->having(count('produto_id') > 1)->get();
+        //$imagens = ImagemProduto::with('foto')->get();
+        return view('produtos.index',compact('registros', 'imagens', 'produto_id'));
     }
 
-    public function anunciar() {
+    public function anunciar()
+    {
         return view('produtos.anunciar');
     }
 
@@ -36,15 +41,15 @@ class ProdutoController extends Controller
     public function salvar(Request $req)
     {
         $usuario_id = Auth()->id();
-        $dados = $req->all();
         $req->all();
+        $dados =$req->all();
+        $id = Auth()->id();
 
         $validacao = \Validator::make($dados,[
             "titulo" => "required",
             "descricao" => "required",
             "preco" => "required",
             "imagem" => "required"
-            
         ]);
 
         if($validacao->fails()){
@@ -56,26 +61,32 @@ class ProdutoController extends Controller
         $produto->descricao = $req->descricao;
         $produto->preco = $req->preco;
         $produto->usuario_id = $usuario_id;
+
+        $imagem = $req->imagem[0];
+        $dir = "img/produtos/";
+        $numRand = rand(1111,9999);
+        $extensaoImage = $imagem->guessClientExtension();
+        $nomeImagem = "imagem_".$numRand.".".$extensaoImage;
+        $produto->imagem = $imagem->move($dir, $nomeImagem);
         $produto->save();
 
-        for($i = 0; $i < (count($req->allFiles()['imagem'])); $i++){
+        for($i = 1; $i < count($req->allFiles()['imagem']); $i++){
            
             $file = $req->allFiles()['imagem'][$i];
-
             $productImage = new ImagemProduto();
             //salvando o id do produto na tabela imagemProduto na campo produto_id
             $productImage->produto_id = $produto->id;
+            //dd($productImage->produto_id);
             //$productImage->foto = $file->store('produtos');
             $dir = "img/produtos/";
             $numRand = rand(1111,9999);
-            //verificando extensão do arquivo
             $extensaoImage = $file->guessClientExtension();
             $nomeImagem = "imagem_".$numRand.".".$extensaoImage;
             $productImage->foto = $file->move($dir, $nomeImagem);
             $productImage->save();
             unset($productImage);
-
         }
+
         return redirect()->route('produtos');
     }
 
@@ -95,8 +106,9 @@ class ProdutoController extends Controller
     public function update (Request $req, $id)
     {
         $usuario_id = Auth()->id();
-        $dados = $req->all();
         $req->all();
+        $dados =$req->all();
+        //$id = Auth()->id();
 
         $validacao = \Validator::make($dados,[
             "titulo" => "required",
@@ -114,15 +126,29 @@ class ProdutoController extends Controller
         $produto->descricao = $req->descricao;
         $produto->preco = $req->preco;
         $produto->usuario_id = $usuario_id;
-        $produto->save();
+        $teste = $id;
 
-        for($i = 0; $i < (count($req->allFiles()['imagem'])); $i++){
+        $imagem = $req->imagem[0];
+        $dir = "img/produtos/";
+        $numRand = rand(1111,9999);
+        $extensaoImage = $imagem->guessClientExtension();
+        $nomeImagem = "imagem_".$numRand.".".$extensaoImage;
+        $dados['imagem'] = $imagem->move($dir, $nomeImagem);
+        Produto::find($id)->update($dados);
+
+        //ImagemProduto::delete();
+        //dd($teste);$produto_id = Produto::where('usuario_id','=', $id)->get();
+        ImagemProduto::where('produto_id','=', $teste)->delete();
+
+        
+
+        for($i = 1; $i < count($req->allFiles()['imagem']); $i++){
            
             $file = $req->allFiles()['imagem'][$i];
-
             $productImage = new ImagemProduto();
             //salvando o id do produto na tabela imagemProduto na campo produto_id
-            $productImage->produto_id = $produto->id;
+            $productImage->produto_id = $teste;
+            //dd($productImage->produto_id);
             //$productImage->foto = $file->store('produtos');
             $dir = "img/produtos/";
             $numRand = rand(1111,9999);
@@ -132,8 +158,10 @@ class ProdutoController extends Controller
             $productImage->save();
             unset($productImage);
         }
+        
         return redirect()->route('produtos');
     }
+
 
     public function deletar($id, $usuario)
     {
@@ -146,6 +174,7 @@ class ProdutoController extends Controller
             Produto::find($id)->delete();
         }
         return redirect()->route('produtos');
+        
     }
 
     public function destroy($id)

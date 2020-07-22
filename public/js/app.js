@@ -3239,6 +3239,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['itens', 'detalhe', 'modal']
 });
@@ -3473,7 +3475,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['itens', 'detalhe', 'modal']
+  props: ['id']
 });
 
 /***/ }),
@@ -3651,7 +3653,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['itens']
+  props: ['itens'],
+  methods: {
+    whats: function whats(tel) {
+      var teste = tel.normalize('NFD').replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, '');
+      alert(teste);
+      return teste;
+    }
+  }
 });
 
 /***/ }),
@@ -40960,6 +40969,8 @@ var render = function() {
           _c(
             "div",
             [
+              _c("link-chat", { attrs: { id: "item['id']" } }),
+              _vm._v(" "),
               _c("modal-link", {
                 attrs: {
                   item: item,
@@ -41345,7 +41356,7 @@ var render = function() {
           "a",
           {
             staticClass: "btn btn-primary",
-            attrs: { href: "route('chatify',  item.usuario_id", role: "button" }
+            attrs: { href: "route('chatify',  id)", role: "button" }
           },
           [_vm._v("Chat")]
         )
@@ -41484,7 +41495,7 @@ var render = function() {
             attrs: {
               href:
                 "https://wa.me/55" +
-                item.tel +
+                _vm.whats(item.tel) +
                 "?text=Olá%20gostaria%20de%20fazer%20um%20orçamento!",
               target: "_blank"
             }
@@ -100146,11 +100157,6 @@ Vue.use(vue2_google_maps__WEBPACK_IMPORTED_MODULE_2__, {
   // installComponents: true,
 
 });
-
-function limite() {
-  alert("olá");
-}
-
 var app = new Vue({
   vuetify: _plugins_vuetify__WEBPACK_IMPORTED_MODULE_0__["default"],
   el: '#app',

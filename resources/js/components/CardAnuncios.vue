@@ -8,8 +8,10 @@
                 <h5 class="card-title">{{item['titulo']}}</h5>
                 <p class="card-text">{{item['descricao']}}</p>
                 <p class=""><span>$ </span>{{item['preco']}}</p>
-        
                 <div>
+                    <link-chat
+                        id= "item['id']"
+                    ></link-chat>
                     <modal-link
                         :item="item"
                         :url="detalhe"

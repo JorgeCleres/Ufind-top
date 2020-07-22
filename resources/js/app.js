@@ -79,12 +79,6 @@ Vue.use(VueGoogleMaps, {
   // installComponents: true,
 })
 
-
-    function limite(){
-        alert("olá")
-    }
-
-
 const app = new Vue({
     vuetify: Vuetify,
     el: '#app',

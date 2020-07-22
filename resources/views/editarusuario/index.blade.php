@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -13,10 +14,10 @@
                         <input type="hidden" name="_method" value="put"></inpunt>
                         
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right"></label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" required placeholder="Nome" name="name"  value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -28,7 +29,8 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="tel" id="tel" required placeholder="Telefone" pattern="^[0-9]+$" maxlength="11" />
+   
+                            <input type="text" class="form-control" class="tel" name="tel" id="tel" required placeholder="Telefone" pattern="^[0-9]+$" maxlength="15"/>
                             </div>
                         </div>
 

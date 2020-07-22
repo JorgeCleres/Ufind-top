@@ -89,7 +89,7 @@
 
             <div class="col-md-12 mb-2">
             <label-form name="Preço"></label-form>
-                <input type="text" name="preco" id="preco" v-model="$store.state.item.preco" class="form-control" maxlength="15" required/>
+                <input type="text" name="preco" id="preco" v-model="$store.state.item.preco" onKeyUp="mascaraMoeda(this, event)" class="form-control" maxlength="15" required/>
             </div>
             
             <div class="col-md-12 mb-4">

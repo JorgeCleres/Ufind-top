@@ -10,7 +10,7 @@
 
     <div class="col-md-12 mb-2">
         <label>Preço</label>
-        <input type="text" name="preco" id="preco" class="form-control" maxlength="15" required/>
+        <input type="text" name="preco" id="preco" value="" onKeyUp="mascaraMoeda(this, event)" class="form-control" maxlength="64" required/>
     </div>
 
     <div class="col-md-12 mb-2">

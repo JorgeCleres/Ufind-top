@@ -28,8 +28,7 @@
                             <div class="form-row">
                             <div class="form-group col-md-6">
    
-                            <input type="text" class="form-control" class="tel" name="tel" id="tel" required placeholder="Telefone" pattern="^[0-9]+$" maxlength="15"/>
->>>>>>> Chat_Implementar
+                            <input type="text" class="form-control" class="tel" name="tel" id="tel" required placeholder="Telefone"  maxlength="15"/>
                             </div>
 
                             <div class="form-row">

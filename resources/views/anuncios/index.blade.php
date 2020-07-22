@@ -32,9 +32,6 @@
                     <whats
                         :itens="{{json_encode($user)}}"
                     ></whats>
-                    <example
-                        :itens="{{json_encode($imagens)}}"
-                    ></example>
                 </div>
                 </div>
             </div>

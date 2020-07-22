@@ -50,6 +50,7 @@ Vue.component('modal-link', require('./components/modal/ModalLink.vue').default)
 Vue.component('label-form', require('./components/LabelForm.vue').default);
 Vue.component('menu-nav', require('./components/MenuNav.vue').default);
 Vue.component('whats', require('./components/Whats.vue').default);
+Vue.component('link-chat', require('./components/LinkChat.vue').default);
 
 import * as VueGoogleMaps from 'vue2-google-maps'
  

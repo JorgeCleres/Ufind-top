@@ -20,7 +20,7 @@ class CreateProdutosTable extends Migration
             $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('titulo');
             $table->string('descricao');
-            //$table->string('imagem');
+            $table->string('imagem')->default();
             $table->decimal('preco', 8, 2);
             //$table->string('lat')->nullable();
             //$table->string('lng')->nullable();

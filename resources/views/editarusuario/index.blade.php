@@ -13,22 +13,19 @@
                         @csrf
                         <input type="hidden" name="_method" value="put"></inpunt>
                         
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right"></label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" required placeholder="Nome" name="name"  value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="col-md-12">
                             <div class="form-row">
-                            <div class="form-group col-md-6">
-   
-                            <input type="text" class="form-control" class="tel" name="tel" id="tel" required placeholder="Telefone"  maxlength="15"/>
+                                <div class="form-group col-md-6">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nome">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" name="tel" id="tel" required placeholder="Telefone" pattern="^[0-9]+$" maxlength="11" />
+                                </div>
                             </div>
 
                             <div class="form-row">
@@ -42,6 +39,7 @@
                                     <input type="text" class="form-control" id="numero"  name="numero" pattern="^[a-zA-Z 0-9]+$" required placeholder="nº 0">
                                 </div>
                             </div>
+
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <input type="text" class="form-control" id="cidade" name="cidade" pattern="^[ a-zA-Z]+$" required placeholder="Cidade" readonly>
@@ -69,6 +67,7 @@
     </div>
 </div>
 <script>
+
     $(document).ready(function(){
       $('#tel').mask('(00) 0000-0000');
       });   

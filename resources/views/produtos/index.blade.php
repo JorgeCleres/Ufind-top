@@ -8,9 +8,16 @@
         <li>{{$value}}</li>
         @endforeach
     @endif
-    
-    
+<!--
+    @foreach($imagens as $imagem)
+        <img src="{{$imagem->foto}}">
+        <p>{{$imagem->foto}}</p>
+    @endforeach
 
+    @foreach($produto_id as $prid)
+        <p>id  --{{$prid->id}}</p>
+    @endforeach
+    -->
     <card-meu-produto
         v-bind:itens="{{json_encode($registros)}}"
         editar="/produtos/"
@@ -18,11 +25,12 @@
         token="{{ csrf_token() }}"
         modal="sim"
         >
-        <example
-            :itens="{{json_encode($imagens)}}"
-        ></example>
     </card-meu-produto>
-
+    <!--
+    <example
+        :itens="{{json_encode($imagens)}}"
+    ></example>
+-->
 <!--
     <modal
         nome="adicionar"
@@ -89,11 +97,11 @@
 
             <div class="col-md-12 mb-2">
             <label-form name="Preço"></label-form>
-                <input type="text" name="preco" id="preco" v-model="$store.state.item.preco" class="form-control" maxlength="15" required/>
+                <input type="text" name="preco" id="preco" v-model="$store.state.item.preco" onKeyUp="mascaraMoeda(this, event)" class="form-control" maxlength="15" required/>
             </div>
             
             <div class="col-md-12 mb-4">
-                <input type="file" class="form-control-file" name="imagem[]" multiple="multiple" id="addFotoGaleria" required>
+                <input type="file" class="form-control-file" name="imagem[]" multiple="multiple" id="addFotoGaleria">
             </div>
 
             <div class="imagem">

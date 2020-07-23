@@ -15,3 +15,5 @@ $(function() {
         viewImage(this, 'div.galeria');
     });
     });
+
+    

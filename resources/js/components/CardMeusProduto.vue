@@ -7,17 +7,14 @@
         <div class="card mb-3" style="max-width: 940px;" v-for="(item, index) in itens" :key="index">
             <div class="row no-gutters">
                 <div class="col-md-3">
-
-                    <slot></slot>
-                    <!--<img v-bind:src="item['imagem']" class="card-img" alt="...">-->
-
-
+                    <img v-bind:src="item['imagem']" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{item['titulo']}}</h5>
                         <p class="card-text">{{item['descricao']}}</p>
                         <p class="card-text"><small class="text-muted"><span>$ </span>{{item['preco']}}</small></p>
+                        <p class="card-text">{{item['id']}}</p>
                         
                         <div v-if="detalhe || editar || deletar">
                             <form  v-bind:id="index" v-if="deletar && token" :action="deletar + item.id" method="post">

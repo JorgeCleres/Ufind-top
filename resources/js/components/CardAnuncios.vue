@@ -8,11 +8,13 @@
                 <h5 class="card-title">{{item['titulo']}}</h5>
                 <p class="card-text">{{item['descricao']}}</p>
                 <p class=""><span>$ </span>{{item['preco']}}</p>
+                <a class="btn btn-primary" v-bind:href="'chatify/' + item['usuario_id'] ">CHAT</a>
                 <div>
                     <link-chat
                         id= "item['id']"
                     ></link-chat>
                     <modal-link
+                        
                         :item="item"
                         :url="detalhe"
                         tipo="button"
@@ -32,6 +34,8 @@
        props: ['itens','detalhe','modal']
     }
 </script>
+
+
 
 <style scoped>
 

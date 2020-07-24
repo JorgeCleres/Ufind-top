@@ -15,7 +15,6 @@
         methods: {
             whats(tel) {
                 var teste = tel.normalize('NFD').replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, '');
-                alert(teste);
                 return teste;
             }
         }

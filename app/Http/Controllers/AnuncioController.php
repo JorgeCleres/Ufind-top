@@ -16,12 +16,10 @@ class AnuncioController extends Controller
     public function index()
     {
         $id = Auth()->id();
-        $registros = Produto::all();
-        //$registros = json_encode(Produto::all()); ->paginate(1)
-        //$registros = Produto::select('id','titulo','descricao', 'imagem','preco')->paginate(1);
-        //$user = User::table('tel')->select('id','=',$id)->get();
+        $registros = Produto::all()->where('id', '!=', $id);
         $imagens = ImagemProduto::all();
         $user = User::select('tel')->where('id','=',$id)->get();
+        
 
         return view('anuncios.index',compact('registros','user', 'imagens'));
     }

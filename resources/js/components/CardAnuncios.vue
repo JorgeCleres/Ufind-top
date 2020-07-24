@@ -8,7 +8,7 @@
                 <h5 class="card-title">{{item['titulo']}}</h5>
                 <p class="card-text">{{item['descricao']}}</p>
                 <p class=""><span>$ </span>{{item['preco']}}</p>
-                <a class="btn btn-primary" v-bind:href="'chatify/' + item['usuario_id'] ">CHAT</a>
+                <a class="btn btn-primary" v-bind:href="'chatify/' + item['usuario_id'] ">CHAT DO ANUNCIANTE</a>
                 <div>
                     <link-chat
                         id= "item['id']"

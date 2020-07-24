@@ -19,6 +19,7 @@ class EditarUserController extends Controller
 
     public function update(Request $req, $id)
     {
+
         $req->all();
         $dados = $req->all();
 

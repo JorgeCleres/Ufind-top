@@ -11,7 +11,7 @@
             {{-- center side --}}
             <td>
                 <p data-id="{{ 'user_'.Auth::user()->id }}">Mensagens Salvas <span>You</span></p>
-                <span>Save messages secretly</span>
+                
             </td>
         </tr>
     </table>
@@ -50,7 +50,7 @@
                 : $lastMessage->body
             }}
             @else
-            <span class="fas fa-file"></span> Anexo
+            <span class="fas fa-file"></span> Anexos
             @endif
         </span>
         {{-- New messages counter --}}

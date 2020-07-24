@@ -24,7 +24,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" name="tel" id="tel" required placeholder="Telefone" pattern="^[0-9]+$" maxlength="11" />
+                                    <input type="text" class="form-control" name="tel" id="tel" required placeholder="Telefone"  maxlength="15" />
                                 </div>
                             </div>
 

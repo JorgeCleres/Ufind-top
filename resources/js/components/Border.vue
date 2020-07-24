@@ -1,9 +1,9 @@
 <template>
     <div class="panel panel-primary">
         <div class="panel-heading">{{titulo}}</div>
-        <div class="panel-body">
-            <slot></slot>
-        </div>
+            <div class="panel-body">
+                <slot></slot>
+            </div>
     </div>
 </template>
 
@@ -17,7 +17,7 @@
         margin-left: 50px;
     }
     .border {
-        border: 2px solid black;
+        border: 8px solid black;
         border-radius: 14px;
         margin: 1px;
     }

@@ -16,8 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
-    <script type="text/javascript">
-    <link rel="shortcut icon" href="img/logo/logo.png" >
+    <link rel="shortcut icon" href="img/logo/logo.png">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.js"
@@ -61,7 +60,7 @@
                             <li class="nav-item dropdown">
                                 <link-botao
                                     href="{{ route('produtos.anunciar') }}"
-                                    classe="btn btn-success btn-lg"
+                                    classe="btn btn-lg"
                                     name="Anunciar"
                                 ></link-botao>
                             </li>

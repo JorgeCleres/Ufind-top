@@ -16,7 +16,7 @@ class AnuncioController extends Controller
     public function index()
     {
         $id = Auth()->id();
-        $registros = Produto::all()->where('id', '!=', $id);
+        $registros = Produto::where('usuario_id', '!=', $id)->get();
         $imagens = ImagemProduto::all();
         $user = User::select('tel')->where('id','=',$id)->get();
         

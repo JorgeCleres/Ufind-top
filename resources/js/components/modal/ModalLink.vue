@@ -1,7 +1,7 @@
 <template>
     <span>
         <span>
-            <button v-on:click="preencheFormulario" v-if="tipo == 'button'" type="button" :class="css" data-toggle="modal" :data-target="'#' + nome">{{titulo}}</button>
+            <button v-on:click="preencheFormulario" v-if="tipo == 'button'" type="button" :class="css" data-toggle="modal" :data-target="'#' + nome"><p>{{titulo}}</p></button>
             <a v-on:click="preencheFormulario" v-if="tipo == 'link'" href="#" :class="classe" :data-target="'#' + nome">{{titulo}}</a>
         </span>
         <!--
@@ -29,6 +29,16 @@
 
 <style scoped>
     button {
-        color: white
+        background-color: #589ef5;
+        border: 1px solid #589ef9;
+        color: rgb(248, 248, 248);
+        
     }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0rem;
+        color: rgb(248, 248, 248);
+    }
+    
 </style>

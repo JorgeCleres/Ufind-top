@@ -3241,6 +3241,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['itens', 'detalhe', 'modal']
 });
@@ -3657,7 +3659,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     whats: function whats(tel) {
       var teste = tel.normalize('NFD').replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, '');
-      alert(teste);
       return teste;
     }
   }
@@ -40965,6 +40966,15 @@ var render = function() {
             _c("span", [_vm._v("$ ")]),
             _vm._v(_vm._s(item["preco"]))
           ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: "chatify/" + item["usuario_id"] }
+            },
+            [_vm._v("CHAT")]
+          ),
           _vm._v(" "),
           _c(
             "div",

@@ -96,6 +96,7 @@
                             </div>
                         </div>
                     </form>
+                    <rodape></rodape>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
     <div class="card-deck">
         <nav class="navbar navbar-light bg-light">
         </nav>
-        <div class="card" v-for="(item, index) in lista" :key="index">
+        <div class="card text-white bg-dark mb-3"  v-for="(item, index) in lista" :key="index">
           <img  :src="item['imagem']" class="card-img-top" alt="imagem não carregou corretamente" style="width:220px">
 
             <div class="card-body">

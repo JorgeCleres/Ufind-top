@@ -41062,57 +41062,61 @@ var render = function() {
         _c("nav", { staticClass: "navbar navbar-light bg-light" }),
         _vm._v(" "),
         _vm._l(_vm.lista, function(item, index) {
-          return _c("div", { key: index, staticClass: "card" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              staticStyle: { width: "220px" },
-              attrs: {
-                src: item["imagem"],
-                alt: "imagem não carregou corretamente"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h5", { staticClass: "card-title titulo" }, [
-                _c("strong", [_vm._v(_vm._s(item["titulo"]))])
-              ]),
+          return _c(
+            "div",
+            { key: index, staticClass: "card text-white bg-dark mb-3" },
+            [
+              _c("img", {
+                staticClass: "card-img-top",
+                staticStyle: { width: "220px" },
+                attrs: {
+                  src: item["imagem"],
+                  alt: "imagem não carregou corretamente"
+                }
+              }),
               _vm._v(" "),
-              _c("p", { staticClass: "card-text text" }, [
-                _vm._v(_vm._s(item["descricao"]))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "preco" }, [
-                _c("span", [_vm._v("$")]),
-                _vm._v(_vm._s(item["preco"]))
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-lg chat",
-                      attrs: { href: "chatify/" + item["usuario_id"] }
-                    },
-                    [_vm._v("CHAT DO ANUNCIANTE")]
-                  ),
-                  _vm._v(" "),
-                  _c("modal-link", {
-                    attrs: {
-                      item: item,
-                      url: _vm.detalhe,
-                      tipo: "button",
-                      nome: "detalhe",
-                      titulo: "Ver mais",
-                      css: "btn btn-lg"
-                    }
-                  })
-                ],
-                1
-              )
-            ])
-          ])
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "card-title titulo" }, [
+                  _c("strong", [_vm._v(_vm._s(item["titulo"]))])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text text" }, [
+                  _vm._v(_vm._s(item["descricao"]))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "preco" }, [
+                  _c("span", [_vm._v("$")]),
+                  _vm._v(_vm._s(item["preco"]))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-lg chat",
+                        attrs: { href: "chatify/" + item["usuario_id"] }
+                      },
+                      [_vm._v("CHAT DO ANUNCIANTE")]
+                    ),
+                    _vm._v(" "),
+                    _c("modal-link", {
+                      attrs: {
+                        item: item,
+                        url: _vm.detalhe,
+                        tipo: "button",
+                        nome: "detalhe",
+                        titulo: "Ver mais",
+                        css: "btn btn-lg"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
         })
       ],
       2

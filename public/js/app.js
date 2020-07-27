@@ -3246,6 +3246,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['itens', 'detalhe', 'modal'],
   data: function data() {
@@ -8317,7 +8318,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.buscar[data-v-5e0b2c6b] {\n    font-size: 20px;\n    width: 350px;\n    padding: 20px 10px;\n    border: 1px solid blue;\n}\n.titulo[data-v-5e0b2c6b] {\n    font-size: 40px;\n}\n.text[data-v-5e0b2c6b] {\n    font-size: 20px;\n    color: grey;\n}\n.preco[data-v-5e0b2c6b] {\n    font-size: 25px;\n    color: grey;\n}\nspan[data-v-5e0b2c6b] {\n    font-size: 18px;\n    color: green;\n    margin: 0 3px\n}\n.chat[data-v-5e0b2c6b] {\n    background-color: #589ef5;\n    border: 1px solid #589ef9;\n    color: rgb(248, 248, 248);\n}\n.form-inline[data-v-5e0b2c6b] {\n    margin: 75px 0px 0px 40px;\n}\n.card-deck[data-v-5e0b2c6b]{\n    margin: 15px 0;\n}\n.card-img-top[data-v-5e0b2c6b] {\n    max-width: 375px;\n    min-width: 375px;\n    max-height: 217px;\n    min-height: 217px;\n}\n.card-text[data-v-5e0b2c6b] {\n    display: block;\n    width: 320px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n}\n\n", ""]);
+exports.push([module.i, "\n.buscar[data-v-5e0b2c6b] {\n    font-size: 20px;\n    width: 350px;\n    padding: 20px 10px;\n    border: 1px solid blue;\n    align-content: center;\n}\n.titulo[data-v-5e0b2c6b] {\n    font-size: 30px;\n}\n.text[data-v-5e0b2c6b] {\n    font-size: 20px;\n    color: grey;\n}\n.preco[data-v-5e0b2c6b] {\n    font-size: 25px;\n    color: grey;\n}\nspan[data-v-5e0b2c6b] {\n    font-size: 18px;\n    color: green;\n    margin: 0 3px\n}\n.chat[data-v-5e0b2c6b] {\n    background-color: #589ef5;\n    border: 1px solid #589ef9;\n    color: rgb(248, 248, 248);\n}\n.form-inline[data-v-5e0b2c6b] {\n    margin: 75px 0px 0px 40px;\n    align-items: center;\n}\n.card[data-v-5e0b2c6b]{\n    margin: 15px 0;\n    margin-right: 0px;\n    margin-left: 0px;\n}\n.card-img-top[data-v-5e0b2c6b] {\n    max-width: 375px;\n    min-width: 375px;\n    max-height: 217px;\n    min-height: 217px;\n    align-self: center;\n}\n.card-text[data-v-5e0b2c6b] {\n    display: block;\n    width: 320px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n}\n\n", ""]);
 
 // exports
 
@@ -41055,67 +41056,65 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
+    _c("nav", { staticClass: "navbar navbar-light bg-light" }),
+    _vm._v(" "),
     _c(
       "div",
-      { staticClass: "card-deck" },
-      [
-        _c("nav", { staticClass: "navbar navbar-light bg-light" }),
-        _vm._v(" "),
-        _vm._l(_vm.lista, function(item, index) {
-          return _c("div", { key: index, staticClass: "card" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              staticStyle: { width: "220px" },
-              attrs: {
-                src: item["imagem"],
-                alt: "imagem não carregou corretamente"
-              }
-            }),
+      { staticClass: "row row-cols-1 row-cols-md-4" },
+      _vm._l(_vm.lista, function(item, index) {
+        return _c("div", { key: index, staticClass: "card" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            staticStyle: { width: "220px" },
+            attrs: {
+              src: item["imagem"],
+              alt: "imagem não carregou corretamente"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title titulo" }, [
+              _c("strong", [_vm._v(_vm._s(item["titulo"]))])
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h5", { staticClass: "card-title titulo" }, [
-                _c("strong", [_vm._v(_vm._s(item["titulo"]))])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text text" }, [
-                _vm._v(_vm._s(item["descricao"]))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "preco" }, [
-                _c("span", [_vm._v("$")]),
-                _vm._v(_vm._s(item["preco"]))
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-lg chat",
-                      attrs: { href: "chatify/" + item["usuario_id"] }
-                    },
-                    [_vm._v("CHAT DO ANUNCIANTE")]
-                  ),
-                  _vm._v(" "),
-                  _c("modal-link", {
-                    attrs: {
-                      item: item,
-                      url: _vm.detalhe,
-                      tipo: "button",
-                      nome: "detalhe",
-                      titulo: "Ver mais",
-                      css: "btn btn-lg"
-                    }
-                  })
-                ],
-                1
-              )
-            ])
+            _c("p", { staticClass: "card-text text" }, [
+              _vm._v(_vm._s(item["descricao"]))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "preco" }, [
+              _c("span", [_vm._v("R$")]),
+              _vm._v(_vm._s(item["preco"]))
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-lg chat",
+                    attrs: { href: "chatify/" + item["usuario_id"] }
+                  },
+                  [_vm._v("Chat do anunciante")]
+                ),
+                _vm._v(" "),
+                _c("modal-link", {
+                  attrs: {
+                    item: item,
+                    url: _vm.detalhe,
+                    tipo: "button",
+                    nome: "detalhe",
+                    titulo: "Ver mais",
+                    css: "btn btn-lg"
+                  }
+                })
+              ],
+              1
+            )
           ])
-        })
-      ],
-      2
+        ])
+      }),
+      0
     )
   ])
 }

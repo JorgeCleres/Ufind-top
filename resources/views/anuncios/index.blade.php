@@ -33,7 +33,5 @@
             </div>
         </div>
     </modal>
-        
-        
 </div>
 @endsection

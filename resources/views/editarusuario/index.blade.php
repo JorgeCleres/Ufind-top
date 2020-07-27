@@ -9,7 +9,7 @@
                 <div class="card-header">Editar Cadastro</div>
 
                 <div class="card-body">
-                <form action="{{route('editarusuario.update', 1)}}" method="post">
+                <form action="{{route('editarusuario.update')}}" method="post">
                         @csrf
                         <input type="hidden" name="_method" value="put"></inpunt>
                         

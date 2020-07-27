@@ -8,16 +8,7 @@
         <li>{{$value}}</li>
         @endforeach
     @endif
-<!--
-    @foreach($imagens as $imagem)
-        <img src="{{$imagem->foto}}">
-        <p>{{$imagem->foto}}</p>
-    @endforeach
 
-    @foreach($produto_id as $prid)
-        <p>id  --{{$prid->id}}</p>
-    @endforeach
-    -->
     <card-meu-produto
         v-bind:itens="{{json_encode($registros)}}"
         editar="/produtos/"
@@ -26,53 +17,6 @@
         modal="sim"
         >
     </card-meu-produto>
-    <!--
-    <example
-        :itens="{{json_encode($imagens)}}"
-    ></example>
--->
-<!--
-    <modal
-        nome="adicionar"
-        classe="modal-dialog modal-lg"
-        titulo="adicionar">
-        <formulario
-            css=""
-            action="{{route('produtos.salvar')}}"
-            method="post"
-            enctype="multipart/form-data"
-            token="{{ csrf_token() }}"
-            id="formAdicionar"
-        >
-            <div class="col-md-12 mb-2">
-                <label>Titulo</label>
-                <input type="text" name="titulo" class="form-control" value="{{old('titulo')}}" />
-            </div>
-
-            <div class="col-md-12 mb-2">
-                <label>Descrição</label>
-                <textarea type="text" name="descricao" class="form-control" onclick="limite()" >{{old('descricao')}}</textarea>
-            </div>
-
-            <div class="col-md-12 mb-2">
-                <label>Preço</label>
-                <input type="text" name="preco" id="preco" class="form-control" value="{{old('preco')}}" />
-            </div>
-
-            <div class="col-md-12 mb-2">
-                <input type="file" class="form-control-file" name="imagem">
-            </div>
-
-            <div class="imagem">
-                <img style="width:100px; margin: 0 15px" :src="$store.state.item.imagem"/>
-            </div>
-    
-        </formulario>
-        <span slot="botoes">
-            <button form="formAdicionar" class="btn btn-primary">Anunciar</button>
-        </span>
-    </modal>
--->
     <modal
         nome="editar"
         classe="modal-dialog modal-lg"

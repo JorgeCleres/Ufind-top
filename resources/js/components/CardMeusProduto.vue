@@ -1,9 +1,5 @@
 <template>
     <div class="cardProduto">
-        <div class="form-inline">
-            <modal-link tipo="button" nome="adicionar" titulo="Anunciar" classe="btn btn-success" ></modal-link>
-        </div>
-
         <div class="card mb-3" style="max-width: 940px;" v-for="(item, index) in itens" :key="index">
             <div class="row no-gutters">
                 <div class="col-md-3">

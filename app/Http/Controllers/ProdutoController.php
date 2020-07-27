@@ -62,6 +62,19 @@ class ProdutoController extends Controller
         $produto->preco = $req->preco;
         $produto->usuario_id = $usuario_id;
 
+        //transformando endereço em lat e long
+        $rua = Auth()->user()->rua;
+        $num = Auth()->user()->numero;
+        $cidade = Auth()->user()->cidade;
+        $address = $rua."+".$num."+".$cidade;
+        $prepAddress = str_replace(' ','+',$address);
+        $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddress.'&key=AIzaSyAWAkZ64JH2YCr7z6-rhYi13K4Z3uy3Ow0');
+        $output= json_decode($geocode);
+        $lat = $output->results[0]->geometry->location->lat;
+        $lng = $output->results[0]->geometry->location->lng;
+        $produto->lat = $lat;
+        $produto->lng = $lng;
+
         $imagem = $req->imagem[0];
         $dir = "img/produtos/";
         $numRand = rand(1111,9999);
@@ -86,6 +99,7 @@ class ProdutoController extends Controller
             $productImage->save();
             unset($productImage);
         }
+        
 
         return redirect()->route('produtos');
     }
@@ -127,6 +141,18 @@ class ProdutoController extends Controller
         $produto->preco = $req->preco;
         $produto->usuario_id = $usuario_id;
         $teste = $id;
+
+        $rua = Auth()->user()->rua;
+        $num = Auth()->user()->numero;
+        $cidade = Auth()->user()->cidade;
+        $address = $rua."+".$num."+".$cidade;
+        $prepAddress = str_replace(' ','+',$address);
+        $geocode = file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddress.'&key=AIzaSyAWAkZ64JH2YCr7z6-rhYi13K4Z3uy3Ow0');
+        $output= json_decode($geocode);
+        $lat = $output->results[0]->geometry->location->lat;
+        $lng = $output->results[0]->geometry->location->lng;
+        $produto->lat = $lat;
+        $produto->lng = $lng;
 
         $imagem = $req->imagem[0];
         $dir = "img/produtos/";

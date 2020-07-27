@@ -31,6 +31,7 @@
         "node": "^14.5.0",
         "vue2-google-maps": "^0.10.7",
         "vuetify": "^2.3.4",
-        "vuetify-loader": "^1.5.0"
+        "vuetify-loader": "^1.5.0",
+        "x5-gmaps": "^0.3.16"
     }
 }

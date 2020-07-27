@@ -26,9 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         $id = Auth()->id();
-        //$registros = Produto::where('usuario_id','!=',$id)->get();
+        $registros = Produto::where('usuario_id','!=',$id)->get();
         //$registros = Produto::select('lat','lng')->where('usuario_id','=',$id)->get();
-        $registros = Produto::all();
+        //$registros = Produto::all();
         
         return view('home',compact('registros'));
     }

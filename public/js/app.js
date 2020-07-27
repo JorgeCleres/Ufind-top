@@ -3518,12 +3518,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 //
 //
 //
@@ -3575,30 +3569,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       //console.log(m.latLng)
       }
       */
-      if (_markers.length != 0) {
-        console.log(this.markers);
-        var bounds = new google.maps.LatLngBounds();
 
-        var _iterator = _createForOfIteratorHelper(_markers),
-            _step;
-
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var m = _step.value;
-            bounds.extend(m.latLng);
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
+      /*
+      if (markers.length != 0){
+         console.log(this.markers)
+          
+         const bounds = new google.maps.LatLngBounds()
+        for (let m of markers) {
+            
+            bounds.extend(m.latLng)
         }
-
-        this.$refs.map.fitBounds(bounds);
-      }
+        this.$refs.map.fitBounds(bounds)
+      }*/
     }
     /*
     markers(markers) {
-      if (markers.length > 2){
+      if (markers.length >= 0){
           const bounds = new google.maps.LatLngBounds()
           for (let m of markers) {
               bounds.extend(m.latLng)
@@ -3612,11 +3598,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     var _this = this;
 
     this.itens.forEach(function (item) {
-      _this.markers = {
+      _this.markers.push({
         lat: parseFloat(item.lat),
         lng: parseFloat(item.lng)
-      }; //this.markers.push({ position: marker });
-      //console.log(this.markers);
+      });
     });
     /*
     this.itens.forEach(item => {
@@ -41515,18 +41500,37 @@ var render = function() {
             "map-type-id": "terrain"
           }
         },
-        _vm._l(_vm.markers, function(marker, index) {
-          return _c("GmapMarker", {
-            key: index,
-            attrs: { position: _vm.markers, clickable: true, draggable: true },
+        [
+          _c("gmap-info-window", {
+            attrs: {
+              options: _vm.infoOptions,
+              position: _vm.infoWindowPos,
+              opened: _vm.infoWindOpen
+            },
             on: {
-              click: function($event) {
-                return _vm.toggleInfoWindown(_vm.m.i)
+              closeclick: function($event) {
+                _vm.infoWinOpen = false
               }
             }
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.markers, function(marker, index) {
+            return _c("GmapMarker", {
+              key: index,
+              attrs: {
+                position: _vm.markers[index],
+                clickable: true,
+                draggable: true
+              },
+              on: {
+                click: function($event) {
+                  return _vm.toggleInfoWindown(_vm.m.i)
+                }
+              }
+            })
           })
-        }),
-        1
+        ],
+        2
       )
     ],
     1
@@ -101758,8 +101762,8 @@ var opts = {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\diego\Desktop\TCC\Ufind-top\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\diego\Desktop\TCC\Ufind-top\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\jrgcl\OneDrive\Área de Trabalho\Ufind-top\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jrgcl\OneDrive\Área de Trabalho\Ufind-top\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

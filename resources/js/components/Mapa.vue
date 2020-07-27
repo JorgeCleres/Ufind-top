@@ -8,18 +8,18 @@
             style="width: 1000px; height: 500px"
             ref="map"
             >
-            <!--
+            
             <gmap-info-window
                 :options="infoOptions"
                 :position="infoWindowPos"
                 :opened="infoWindOpen"
                 @closeclick="infoWinOpen=false"
             ></gmap-info-window>
-            -->
+            
             <GmapMarker
                 :key="index"
                 v-for="(marker, index) in markers"
-                :position="markers"
+                :position="markers[index]"
                 :clickable="true"
                 :draggable="true"
                 @click="toggleInfoWindown(m.i)"
@@ -48,7 +48,7 @@
                for(let m of markers){
                    //console.log(m.latLng)
                }
-               */
+               *//*
                if (markers.length != 0){
                     console.log(this.markers)
 
@@ -60,10 +60,10 @@
                        bounds.extend(m.latLng)
                    }
                    this.$refs.map.fitBounds(bounds)
-               }
+               }*/
            },/*
            markers(markers) {
-               if (markers.length > 2){
+               if (markers.length >= 0){
                    const bounds = new google.maps.LatLngBounds()
                    for (let m of markers) {
                        bounds.extend(m.latLng)
@@ -74,12 +74,10 @@
        },
        created(){
             this.itens.forEach(item => {
-                this.markers = {
+                this.markers.push({
                     lat: parseFloat(item.lat),
                     lng: parseFloat(item.lng)
-                }
-                //this.markers.push({ position: marker });
-                //console.log(this.markers);
+                })
            })
 
 

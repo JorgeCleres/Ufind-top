@@ -115,10 +115,11 @@
                 console.log(this.itens)
                 this.itens.filter(res => {
 
-                    for(let k = 0; k < res.length; k++){}
+                    for(let k = 0; k < res.length; k++){
                         if(data.descricao.indexOf(this.buscar) >= 0){
                             console.log(data.id);
                         }
+                    }
                 })
                 
             }

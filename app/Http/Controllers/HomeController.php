@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Produto;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $registros = User::all();
+        $id = Auth()->id();
+        //$registros = Produto::where('usuario_id','!=',$id)->get();
+        //$registros = Produto::select('lat','lng')->where('usuario_id','=',$id)->get();
+        $registros = Produto::all();
+        
         return view('home',compact('registros'));
     }
 }

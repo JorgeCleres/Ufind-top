@@ -3,10 +3,8 @@
 @section('content')
 <div class="container">
     <mapa
-        @foreach($registros as $registro)
-            :lat={{$registro->lat}}
-            :lng={{$registro->lng}}
-        @endforeach
+        :itens="{{json_encode($registros)}}"
+        
     ></mapa>
 </div>
 @endsection

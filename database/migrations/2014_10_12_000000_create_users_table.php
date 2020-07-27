@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('cidade');
             $table->string('bairro');
             $table->string('uf');
-            $table->string('lat')->default();
-            $table->string('lng')->default();
+            //$table->string('lat')->default();
+            //$table->string('lng')->default();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

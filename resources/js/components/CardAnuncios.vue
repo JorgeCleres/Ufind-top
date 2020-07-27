@@ -3,19 +3,20 @@
         <form class="form-inline container">
             <input class="form-control mr-sm-10 buscar" type="search" placeholder="Buscar" aria-label="Buscar" v-model="buscar">
         </form>
-    <div class="card-deck">
-        <nav class="navbar navbar-light bg-light">
-        </nav>
-        <div class="card" v-for="(item, index) in lista" :key="index">
-          <img  :src="item['imagem']" class="card-img-top" alt="imagem não carregou corretamente" style="width:220px">
 
+    
+        <nav class="navbar navbar-light bg-light"></nav>
+
+        <div class="row row-cols-1 row-cols-md-4">
+        <div class="card" v-for="(item, index) in lista" :key="index">
+          <img  :src="item['imagem']" class="card-img-top" alt="imagem não carregou corretamente" style="width:220px;">
+            
             <div class="card-body">
                 <h5 class="card-title titulo"><strong>{{item['titulo']}}</strong></h5>
                 <p class="card-text text">{{item['descricao']}}</p>
-                <p class="preco"><span>$</span>{{item['preco']}}</p>
-
+                <p class="preco"><span>R$</span>{{item['preco']}}</p>
                 <div>
-                    <a class="btn btn-lg chat" v-bind:href="'chatify/' + item['usuario_id'] ">CHAT DO ANUNCIANTE</a>
+                    <a class="btn btn-lg chat" v-bind:href="'chatify/' + item['usuario_id'] ">Chat do anunciante</a>
                     <modal-link  
                         :item="item"
                         :url="detalhe"
@@ -75,9 +76,10 @@
         width: 350px;
         padding: 20px 10px;
         border: 1px solid blue;
+        align-content: center;
     }
     .titulo {
-        font-size: 40px;
+        font-size: 30px;
     }
 
     .text {
@@ -101,15 +103,19 @@
     }
     .form-inline {
         margin: 75px 0px 0px 40px;
+        align-items: center;
     }
-    .card-deck{
+    .card{
         margin: 15px 0;
+        margin-right: 0px;
+        margin-left: 0px;
     }
     .card-img-top {
         max-width: 375px;
         min-width: 375px;
         max-height: 217px;
         min-height: 217px;
+        align-self: center;
     }
 
     .card-text {

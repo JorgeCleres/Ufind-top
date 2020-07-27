@@ -121,9 +121,9 @@ class ProdutoController extends Controller
     {
         $usuario_id = Auth()->id();
         $req->all();
-        $dados =$req->all();
+        $dados = $req->all();
         //$id = Auth()->id();
-
+/*
         $validacao = \Validator::make($dados,[
             "titulo" => "required",
             "descricao" => "required",
@@ -134,12 +134,15 @@ class ProdutoController extends Controller
         if($validacao->fails()){
             return redirect()->back()->withErrors($validacao)->withInput();
         }
-
+*/
         $produto = new Produto();
+        /*
         $produto->titulo = $req->titulo;
         $produto->descricao = $req->descricao;
         $produto->preco = $req->preco;
         $produto->usuario_id = $usuario_id;
+        $dados['usuario_id'] = $usuario_id;
+        */
         $teste = $id;
 
         $rua = Auth()->user()->rua;
@@ -151,38 +154,39 @@ class ProdutoController extends Controller
         $output= json_decode($geocode);
         $lat = $output->results[0]->geometry->location->lat;
         $lng = $output->results[0]->geometry->location->lng;
-        $produto->lat = $lat;
-        $produto->lng = $lng;
+        $dados['lat'] = $lat;
+        $dados['lng'] = $lng;
 
-        $imagem = $req->imagem[0];
-        $dir = "img/produtos/";
-        $numRand = rand(1111,9999);
-        $extensaoImage = $imagem->guessClientExtension();
-        $nomeImagem = "imagem_".$numRand.".".$extensaoImage;
-        $dados['imagem'] = $imagem->move($dir, $nomeImagem);
+        if($req->hasFile('imagem')){
+            $imagem = $req->imagem[0];
+            $dir = "img/produtos/";
+            $numRand = rand(1111,9999);
+            $extensaoImage = $imagem->guessClientExtension();
+            $nomeImagem = "imagem_".$numRand.".".$extensaoImage;
+            $dados['imagem'] = $imagem->move($dir, $nomeImagem);
+        }
         Produto::find($id)->update($dados);
 
-        //ImagemProduto::delete();
-        //dd($teste);$produto_id = Produto::where('usuario_id','=', $id)->get();
+        
         ImagemProduto::where('produto_id','=', $teste)->delete();
 
         
-
-        for($i = 1; $i < count($req->allFiles()['imagem']); $i++){
-           
-            $file = $req->allFiles()['imagem'][$i];
-            $productImage = new ImagemProduto();
-            //salvando o id do produto na tabela imagemProduto na campo produto_id
-            $productImage->produto_id = $teste;
-            //dd($productImage->produto_id);
-            //$productImage->foto = $file->store('produtos');
-            $dir = "img/produtos/";
-            $numRand = rand(1111,9999);
-            $extensaoImage = $file->guessClientExtension();
-            $nomeImagem = "imagem_".$numRand.".".$extensaoImage;
-            $productImage->foto = $file->move($dir, $nomeImagem);
-            $productImage->save();
-            unset($productImage);
+        if($req->hasFile('imagem')){
+            for($i = 1; $i < count($req->allFiles()['imagem']); $i++){
+                $file = $req->allFiles()['imagem'][$i];
+                $productImage = new ImagemProduto();
+                //salvando o id do produto na tabela imagemProduto na campo produto_id
+                $productImage->produto_id = $teste;
+                //dd($productImage->produto_id);
+                //$productImage->foto = $file->store('produtos');
+                $dir = "img/produtos/";
+                $numRand = rand(1111,9999);
+                $extensaoImage = $file->guessClientExtension();
+                $nomeImagem = "imagem_".$numRand.".".$extensaoImage;
+                $productImage->foto = $file->move($dir, $nomeImagem);
+                $productImage->save();
+                unset($productImage);
+            }
         }
         
         return redirect()->route('produtos');

@@ -3549,6 +3549,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['itens'],
   data: function data() {
@@ -3556,10 +3559,11 @@ __webpack_require__.r(__webpack_exports__);
       markers: [],
       place: null,
       center: {
-        lat: -25.4832394,
-        lng: -49.2170207
+        lat: '',
+        lng: ''
       },
-      zoom: 10
+      zoom: 10,
+      buscar: ''
     };
   },
   watch: {
@@ -3583,55 +3587,63 @@ __webpack_require__.r(__webpack_exports__);
         this.$refs.map.fitBounds(bounds)
       }*/
     }
-    /*
-    markers(markers) {
-      if (markers.length >= 0){
-          const bounds = new google.maps.LatLngBounds()
-          for (let m of markers) {
-              bounds.extend(m.latLng)
-          }
-          this.$refs.map.fitBounds(bounds)
-      }
-    }*/
+  },
+  computed: {
+    //lista:funtion está recebendo os itens
+    marker: function marker() {
+      var _this = this;
 
+      console.log('ola'); //res é uma variavel
+      //filter é um filtro javascript
+
+      return this.itens.filter(function (res) {
+        //tranformando o res em um array de valores
+        res = Object.values(res); //res pega o valor na posiçao 1 que é itens
+        //indexOf retorna um valor negativo caso não encontre o valor da variavel res (caso res seja falso)
+
+        for (var k = 0; k < res.length; k++) {
+          //(res[k] + "") = transforma o valor recebido em javascript
+          if ((res[k] + "").toLowerCase().indexOf(_this.buscar.toLowerCase()) >= 0) {
+            return true;
+          }
+        }
+
+        return false;
+      }); //return this.itens;
+    }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     this.itens.forEach(function (item) {
-      _this.markers.push({
+      _this2.center = {
+        lat: parseFloat(item.lat),
+        lng: parseFloat(item.lng)
+      };
+
+      _this2.markers.push({
         lat: parseFloat(item.lat),
         lng: parseFloat(item.lng)
       });
     });
-    /*
-    this.itens.forEach(item => {
-        this.markers = _.range(1).map(m => ({
-            latLng: {
-                lat: parseFloat(item.lat),
-                lng: parseFloat(item.lng)
-            }
-        }))
-        //console.log(this.markers)
-    });
-    console.log(this.markers)*/
   },
   methods: {
     generate: function generate() {
-      //const spread = Math.random() + 0.001
-      this.zoom = 18;
+      var _this3 = this;
+
+      /*this.zoom = 18;
       this.center = {
-        lat: parseFloat(item.lat),
-        lng: parseFloat(item.lng)
-      };
-      alert(item.lat);
-      this.markers = _.range(30).map(function (m) {
-        return {
-          latLng: {
-            lat: parseFloat(item.lat),
-            lng: parseFloat(item.lng)
+          lat: parseFloat(item.lat),
+          lng: parseFloat(item.lng)
+      }*/
+      //alert(this.item);
+      console.log(this.itens);
+      this.itens.filter(function (res) {
+        for (var k = 0; k < res.length; k++) {
+          if (data.descricao.indexOf(_this3.buscar) >= 0) {
+            console.log(data.id);
           }
-        };
+        }
       });
     }
   }
@@ -8436,7 +8448,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.footer {\r\n  position: fixed;\r\n  left: 0;\r\n  bottom: 0;\r\n  width: 100%;\r\n  background-color: #3a3f46;\r\n  color: white;\r\n  text-align: center;\n}\n.footer-copyright {\r\n    background-color: #33373e;\r\n    padding-top: 3px;\r\n    padding-bottom: 3px;\r\n    text-align: center;\n}\n#myFooter ul {\r\n    list-style-type: none;\r\n    padding-left: 0;\r\n    line-height: 1.7;\n}\n#myFooter img {\r\n    width: 40px;\r\n    height: 40px;\n}\n#myFooter .logo img {\r\n    width: 150px;\r\n    height: 90px;\n}\r\n", ""]);
+exports.push([module.i, "\n.footer {\r\n  left: 0;\r\n  bottom: 0;\r\n  width: 100%;\r\n  background-color: #3a3f46;\r\n  color: white;\r\n  text-align: center;\n}\n.footer-copyright {\r\n    background-color: #33373e;\r\n    padding-top: 3px;\r\n    padding-bottom: 3px;\r\n    text-align: center;\n}\n#myFooter ul {\r\n    list-style-type: none;\r\n    padding-left: 0;\r\n    line-height: 1.7;\n}\n#myFooter img {\r\n    width: 40px;\r\n    height: 40px;\n}\n#myFooter .logo img {\r\n    width: 150px;\r\n    height: 90px;\n}\r\n", ""]);
 
 // exports
 
@@ -41486,7 +41498,46 @@ var render = function() {
     "div",
     { staticClass: "mapa" },
     [
-      _c("button", { on: { click: _vm.generate } }, [_vm._v("gerar")]),
+      _c("form", { staticClass: "form-inline container" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.buscar,
+              expression: "buscar"
+            }
+          ],
+          staticClass: "form-control mr-sm-10 buscar",
+          attrs: {
+            type: "search",
+            placeholder: "Buscar",
+            "aria-label": "Buscar"
+          },
+          domProps: { value: _vm.buscar },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.buscar = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.generate($event)
+              }
+            }
+          },
+          [_vm._v("Buscar")]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "GmapMap",
@@ -41499,37 +41550,22 @@ var render = function() {
             "map-type-id": "terrain"
           }
         },
-        [
-          _c("gmap-info-window", {
+        _vm._l(_vm.markers, function(marker, index) {
+          return _c("GmapMarker", {
+            key: index,
             attrs: {
-              options: _vm.infoOptions,
-              position: _vm.infoWindowPos,
-              opened: _vm.infoWindOpen
+              position: _vm.markers[index],
+              clickable: true,
+              draggable: true
             },
             on: {
-              closeclick: function($event) {
-                _vm.infoWinOpen = false
+              click: function($event) {
+                return _vm.toggleInfoWindown(_vm.m.index)
               }
             }
-          }),
-          _vm._v(" "),
-          _vm._l(_vm.markers, function(marker, index) {
-            return _c("GmapMarker", {
-              key: index,
-              attrs: {
-                position: _vm.markers[index],
-                clickable: true,
-                draggable: true
-              },
-              on: {
-                click: function($event) {
-                  return _vm.toggleInfoWindown(_vm.m.i)
-                }
-              }
-            })
           })
-        ],
-        2
+        }),
+        1
       )
     ],
     1

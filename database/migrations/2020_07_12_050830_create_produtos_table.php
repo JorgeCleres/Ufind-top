@@ -22,8 +22,8 @@ class CreateProdutosTable extends Migration
             $table->string('descricao');
             $table->string('imagem');
             $table->string('preco', 64, 2);
-            //$table->string('lat')->nullable();
-            //$table->string('lng')->nullable();
+            $table->string('lat');
+            $table->string('lng');
             $table->timestamps();
         });
     }

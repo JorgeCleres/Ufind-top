@@ -3331,10 +3331,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['itens', 'criar', 'detalhe', 'editar', 'deletar', 'token', 'modal'],
   methods: {
@@ -3522,8 +3518,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -3561,16 +3555,28 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['lat', 'lng'],
+  props: ['itens'],
   data: function data() {
     return {
       markers: [],
-      place: null
+      place: null,
+      center: {
+        lat: -25.4832394,
+        lng: -49.2170207
+      },
+      zoom: 10
     };
   },
-  watch: _defineProperty({
+  watch: {
     markers: function markers(_markers) {
-      if (_markers.length > 2) {
+      /*
+      //console.log(this.markers)
+      for(let m of markers){
+      //console.log(m.latLng)
+      }
+      */
+      if (_markers.length != 0) {
+        console.log(this.markers);
         var bounds = new google.maps.LatLngBounds();
 
         var _iterator = _createForOfIteratorHelper(_markers),
@@ -3590,53 +3596,54 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         this.$refs.map.fitBounds(bounds);
       }
     }
-  }, "markers", function markers(_markers2) {
-    if (_markers2.length > 2) {
-      var bounds = new google.maps.LatLngBounds();
-
-      var _iterator2 = _createForOfIteratorHelper(_markers2),
-          _step2;
-
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var m = _step2.value;
-          bounds.extend(m.latLng);
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
+    /*
+    markers(markers) {
+      if (markers.length > 2){
+          const bounds = new google.maps.LatLngBounds()
+          for (let m of markers) {
+              bounds.extend(m.latLng)
+          }
+          this.$refs.map.fitBounds(bounds)
       }
+    }*/
 
-      this.$refs.map.fitBounds(bounds);
-    }
-  }),
+  },
   created: function created() {
     var _this = this;
 
-    this.markers = _.range(1).map(function (m) {
-      return {
-        latLng: {
-          lat: _this.lat,
-          lng: _this.lng
-        }
-      };
+    this.itens.forEach(function (item) {
+      _this.markers = {
+        lat: parseFloat(item.lat),
+        lng: parseFloat(item.lng)
+      }; //this.markers.push({ position: marker });
+      //console.log(this.markers);
     });
+    /*
+    this.itens.forEach(item => {
+        this.markers = _.range(1).map(m => ({
+            latLng: {
+                lat: parseFloat(item.lat),
+                lng: parseFloat(item.lng)
+            }
+        }))
+        //console.log(this.markers)
+    });
+    console.log(this.markers)*/
   },
   methods: {
     generate: function generate() {
-      var _this2 = this;
-
-      var spread = Math.random() + 0.001;
+      //const spread = Math.random() + 0.001
+      this.zoom = 18;
       this.center = {
-        lat: 1.38 + (Math.random() - 0.5) * spread,
-        lng: 103.8 + (Math.random() - 0.5) * spread
+        lat: parseFloat(item.lat),
+        lng: parseFloat(item.lng)
       };
+      alert(item.lat);
       this.markers = _.range(30).map(function (m) {
         return {
           latLng: {
-            lat: _this2.lat,
-            lng: _this2.lng
+            lat: parseFloat(item.lat),
+            lng: parseFloat(item.lng)
           }
         };
       });
@@ -41088,145 +41095,127 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "cardProduto" },
-    [
-      _c(
+    _vm._l(_vm.itens, function(item, index) {
+      return _c(
         "div",
-        { staticClass: "form-inline" },
+        {
+          key: index,
+          staticClass: "card mb-3",
+          staticStyle: { "max-width": "940px" }
+        },
         [
-          _c("modal-link", {
-            attrs: {
-              tipo: "button",
-              nome: "adicionar",
-              titulo: "Anunciar",
-              classe: "btn btn-success"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm._l(_vm.itens, function(item, index) {
-        return _c(
-          "div",
-          {
-            key: index,
-            staticClass: "card mb-3",
-            staticStyle: { "max-width": "940px" }
-          },
-          [
-            _c("div", { staticClass: "row no-gutters" }, [
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("img", {
-                  staticClass: "card-img",
-                  attrs: { src: item["imagem"], alt: "..." }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-8" }, [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v(_vm._s(item["titulo"]))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(_vm._s(item["descricao"]))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _c("small", { staticClass: "text-muted" }, [
-                      _c("span", [_vm._v("$ ")]),
-                      _vm._v(_vm._s(item["preco"]))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(_vm._s(item["id"]))
-                  ]),
-                  _vm._v(" "),
-                  _vm.detalhe || _vm.editar || _vm.deletar
-                    ? _c("div", [
-                        _vm.deletar && _vm.token
-                          ? _c(
-                              "form",
-                              {
+          _c("div", { staticClass: "row no-gutters" }, [
+            _c("div", { staticClass: "col-md-3" }, [
+              _c("img", {
+                staticClass: "card-img",
+                attrs: { src: item["imagem"], alt: "..." }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-8" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "card-title" }, [
+                  _vm._v(_vm._s(item["titulo"]))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(item["descricao"]))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _c("small", { staticClass: "text-muted" }, [
+                    _c("span", [_vm._v("$ ")]),
+                    _vm._v(_vm._s(item["preco"]))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(item["id"]))
+                ]),
+                _vm._v(" "),
+                _vm.detalhe || _vm.editar || _vm.deletar
+                  ? _c("div", [
+                      _vm.deletar && _vm.token
+                        ? _c(
+                            "form",
+                            {
+                              attrs: {
+                                id: index,
+                                action: _vm.deletar + item.id,
+                                method: "post"
+                              }
+                            },
+                            [
+                              _c("input", {
                                 attrs: {
-                                  id: index,
-                                  action: _vm.deletar + item.id,
-                                  method: "post"
+                                  type: "hidden",
+                                  name: "_method",
+                                  value: "DELETE"
                                 }
-                              },
-                              [
-                                _c("input", {
-                                  attrs: {
-                                    type: "hidden",
-                                    name: "_method",
-                                    value: "DELETE"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: { type: "hidden", name: "_token" },
-                                  domProps: { value: _vm.token }
-                                }),
-                                _vm._v(" "),
-                                _c("modal-link", {
-                                  attrs: {
-                                    item: item,
-                                    url: _vm.editar,
-                                    css: "btn btn-primary",
-                                    tipo: "button",
-                                    nome: "editar",
-                                    titulo: "Editar"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-danger",
-                                    staticStyle: { color: "white" },
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.executaForm(index)
-                                      }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                attrs: { type: "hidden", name: "_token" },
+                                domProps: { value: _vm.token }
+                              }),
+                              _vm._v(" "),
+                              _c("modal-link", {
+                                attrs: {
+                                  item: item,
+                                  url: _vm.editar,
+                                  css: "btn btn-primary",
+                                  tipo: "button",
+                                  nome: "editar",
+                                  titulo: "Editar"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  staticStyle: { color: "white" },
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.executaForm(index)
                                     }
-                                  },
-                                  [_vm._v("Excluir")]
-                                ),
-                                _vm._v(" "),
-                                _vm.detalhe && !_vm.modal
-                                  ? _c("a", { attrs: { href: _vm.detalhe } }, [
-                                      _vm._v("Detalhe")
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.detalhe && _vm.modal
-                                  ? _c("modal-link", {
-                                      attrs: {
-                                        item: item,
-                                        url: _vm.detalhe,
-                                        tipo: "button",
-                                        nome: "detalhe",
-                                        titulo: "Detalhe",
-                                        css: ""
-                                      }
-                                    })
-                                  : _vm._e()
-                              ],
-                              1
-                            )
-                          : _vm._e()
-                      ])
-                    : _vm._e()
-                ])
+                                  }
+                                },
+                                [_vm._v("Excluir")]
+                              ),
+                              _vm._v(" "),
+                              _vm.detalhe && !_vm.modal
+                                ? _c("a", { attrs: { href: _vm.detalhe } }, [
+                                    _vm._v("Detalhe")
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.detalhe && _vm.modal
+                                ? _c("modal-link", {
+                                    attrs: {
+                                      item: item,
+                                      url: _vm.detalhe,
+                                      tipo: "button",
+                                      nome: "detalhe",
+                                      titulo: "Detalhe",
+                                      css: ""
+                                    }
+                                  })
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ])
             ])
-          ]
-        )
-      })
-    ],
-    2
+          ])
+        ]
+      )
+    }),
+    0
   )
 }
 var staticRenderFns = []
@@ -41472,19 +41461,15 @@ var render = function() {
           ref: "map",
           staticStyle: { width: "1000px", height: "500px" },
           attrs: {
-            center: { lat: _vm.lat, lng: _vm.lng },
-            zoom: 10,
+            center: _vm.center,
+            zoom: this.zoom,
             "map-type-id": "terrain"
           }
         },
         _vm._l(_vm.markers, function(marker, index) {
           return _c("GmapMarker", {
             key: index,
-            attrs: {
-              position: marker.latLng,
-              clickable: true,
-              draggable: true
-            },
+            attrs: { position: _vm.markers, clickable: true, draggable: true },
             on: {
               click: function($event) {
                 return _vm.toggleInfoWindown(_vm.m.i)
@@ -100212,23 +100197,8 @@ Vue.use(vue2_google_maps__WEBPACK_IMPORTED_MODULE_2__, {
   load: {
     //key: 'AIzaSyAWAkZ64JH2YCr7z6-rhYi13K4Z3uy3Ow0',
     libraries: 'places' // This is required if you use the Autocomplete plugin
-    // OR: libraries: 'places,drawing'
-    // OR: libraries: 'places,drawing,visualization'
-    // (as you require)
-    //// If you want to set the version, you can do so:
-    // v: '3.26',
 
-  } //// If you intend to programmatically custom event listener code
-  //// (e.g. `this.$refs.gmap.$on('zoom_changed', someFunc)`)
-  //// instead of going through Vue templates (e.g. `<GmapMap @zoom_changed="someFunc">`)
-  //// you might need to turn this on.
-  // autobindAllEvents: false,
-  //// If you want to manually install components, e.g.
-  //// import {GmapMarker} from 'vue2-google-maps/src/components/marker'
-  //// Vue.component('GmapMarker', GmapMarker)
-  //// then disable the following:
-  // installComponents: true,
-
+  }
 });
 var app = new Vue({
   vuetify: _plugins_vuetify__WEBPACK_IMPORTED_MODULE_0__["default"],

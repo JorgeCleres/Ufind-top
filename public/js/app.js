@@ -3247,6 +3247,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['itens', 'detalhe', 'modal'],
   data: function data() {
@@ -8315,7 +8316,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.buscar[data-v-5e0b2c6b] {\n    font-size: 20px;\n    width: 350px;\n    padding: 20px 10px;\n    border: 1px solid blue;\n    align-content: center;\n}\n.titulo[data-v-5e0b2c6b] {\n    font-size: 30px;\n}\n.text[data-v-5e0b2c6b] {\n    font-size: 20px;\n    color: grey;\n}\n.preco[data-v-5e0b2c6b] {\n    font-size: 25px;\n    color: grey;\n}\nspan[data-v-5e0b2c6b] {\n    font-size: 18px;\n    color: green;\n    margin: 0 3px\n}\n.chat[data-v-5e0b2c6b] {\n    background-color: #589ef5;\n    border: 1px solid #589ef9;\n    color: rgb(248, 248, 248);\n}\n.form-inline[data-v-5e0b2c6b] {\n    margin: 75px 0px 0px 40px;\n    align-items: center;\n}\n.card[data-v-5e0b2c6b]{\n    margin: 15px 0;\n    margin-right: 0px;\n    margin-left: 0px;\n}\n.card-img-top[data-v-5e0b2c6b] {\n   /* max-width: 375px;\n    min-width: 375px;\n    max-height: 217px;\n    min-height: 217px;*/\n    width: 100%;\n    height: 217px;\n    align-self: center;\n}\n.card-text[data-v-5e0b2c6b] {\n    display: block;\n    width: 320px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n}\n\n", ""]);
+exports.push([module.i, "\n.titulo[data-v-5e0b2c6b] {\n    font-size: 30px;\n}\n.text[data-v-5e0b2c6b] {\n    font-size: 20px;\n    color: grey;\n}\n.preco[data-v-5e0b2c6b] {\n    font-size: 25px;\n    color: grey;\n}\nspan[data-v-5e0b2c6b] {\n    font-size: 18px;\n    color: green;\n    margin: 0 3px\n}\n.chat[data-v-5e0b2c6b] {\n    background-color: #589ef5;\n    border: 1px solid #589ef9;\n    color: rgb(248, 248, 248);\n}\n.form-inline[data-v-5e0b2c6b] {\n    margin: 75px 0px 0px 40px;\n    align-items: center;\n}\n.card[data-v-5e0b2c6b]{\n    margin: 15px 0;\n    margin-right: 0px;\n    margin-left: 0px;\n}\n.card-img-top[data-v-5e0b2c6b] {\n   /* max-width: 375px;\n    min-width: 375px;\n    max-height: 217px;\n    min-height: 217px;*/\n    width: 100%;\n    height: 217px;\n    align-self: center;\n}\n.card-text[data-v-5e0b2c6b] {\n    display: block;\n    width: 320px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n}\n\n", ""]);
 
 // exports
 
@@ -8429,7 +8430,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.navbar[data-v-d109daae] {\n    position: fixed;\n    width: 100%;\n    height: 80px;\n    box-shadow: 5px 5px 5px rgba(176,176,176,0.5);\n    background-color: #fcfefc;\n    z-index: 9;\n}\n", ""]);
+exports.push([module.i, "\n.navbar[data-v-d109daae] {\n    position: fixed;\n    width: 100%;\n    height: 70px;\n    box-shadow: 5px 5px 5px rgba(176,176,176,0.5);\n    background-color: #fcfefc;\n    z-index: 9;\n}\n", ""]);
 
 // exports
 
@@ -41050,7 +41051,21 @@ var render = function() {
             _vm.buscar = $event.target.value
           }
         }
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-outline-primary my-2 my-sm-0",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.generate($event)
+            }
+          }
+        },
+        [_vm._v("Buscar")]
+      )
     ]),
     _vm._v(" "),
     _c("nav", { staticClass: "navbar navbar-light bg-light" }),
@@ -41529,6 +41544,7 @@ var render = function() {
         _c(
           "button",
           {
+            staticClass: "btn btn-outline-primary my-2 my-sm-0",
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -41596,7 +41612,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    { staticClass: "navbar navbar-expand-md navbar-light bg-white shadow-sm" },
+    { staticClass: "navbar navbar-expand-md navbar navbar-dark bg-primary" },
     [_vm._t("default")],
     2
   )
@@ -101798,8 +101814,8 @@ var opts = {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\diego\Desktop\TCC\Ufind-top\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\diego\Desktop\TCC\Ufind-top\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Luiz_\Desktop\UFINDTOPPERSON\Ufind-top\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Luiz_\Desktop\UFINDTOPPERSON\Ufind-top\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

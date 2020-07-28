@@ -14,11 +14,20 @@
         nome="detalhe"
         titulo="Detalhe"
         classe="modal-dialog modal-xl">
-        <center>
-        <div class="card  " style="max-width: 800px;">
-            <div class="row ">
-                <div class="col-8">
-                <img :src="$store.state.item.imagem" class="card-img" alt="..." >
+
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-8">
+               
+                @foreach($imagens as $imagem)
+               
+                    <img class="card-img"  widith="160px" height="220px" src="{{$imagem->foto}}">
+                    <br> <br> <br>
+                } 
+                @endforeach
+              
+                <img :src="$store.state.item.imagem" widith="160px" height="220px" class="card-img" alt="..." >
+                
                 </div>
                 <div class="col-4">
                 <div class="card-body">

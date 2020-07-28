@@ -2,7 +2,7 @@
     <div class="mapa">
         <form class="form-inline container">
                     <input class="form-control mr-sm-10 buscar" type="search" placeholder="Buscar" aria-label="Buscar" v-model="buscar">
-                    <button @click.prevent="generate">Buscar</button>
+                    <button class="btn btn-outline-primary my-2 my-sm-0" @click.prevent="generate">Buscar</button>
         </form>
         <GmapMap
             :center="center"

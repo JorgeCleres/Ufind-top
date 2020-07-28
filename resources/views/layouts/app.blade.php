@@ -31,10 +31,13 @@
     <div id="app" style="display:none">
         <menu-nav>
             <div class="container">
+         
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                <img src="/img/logo/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                      <img src="/img/logo/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                         Ufind
+                 </a>
+              
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -50,11 +53,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Entrar</a>
+                                <a class="nav-link text-light" href="{{ route('login') }}">Entrar</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">Cadastre-se</a>
+                                    <a class="nav-link text-light " href="{{ route('register') }}">Cadastre-se</a>
                                 </li>
                             @endif
                         @else
@@ -66,11 +69,11 @@
                                 ></link-botao>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('anuncios')}}" class="nav-link">Anuncios</a>
+                                <a href="{{route('anuncios')}}" class="nav-link text-light">Anuncios</a>
                             </li>
                             
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <span>Olá </span>{{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 

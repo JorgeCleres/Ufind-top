@@ -2,6 +2,7 @@
     <border>
         <form class="form-inline container">
             <input class="form-control mr-sm-10 buscar" type="search" placeholder="Buscar" aria-label="Buscar" v-model="buscar">
+            <button class="btn btn-outline-primary my-2 my-sm-0" @click.prevent="generate">Buscar</button>
         </form>
 
     
@@ -71,13 +72,7 @@
 
 
 <style scoped>
-    .buscar {
-        font-size: 20px;
-        width: 350px;
-        padding: 20px 10px;
-        border: 1px solid blue;
-        align-content: center;
-    }
+   
     .titulo {
         font-size: 30px;
     }

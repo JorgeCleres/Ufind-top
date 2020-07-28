@@ -20,7 +20,7 @@ class ProdutoController extends Controller
         $produto_id = Produto::where('usuario_id','=', $id)->get();
         //$imagens = ImagemProduto::where('produto_id','=','id')->get();
         $imagens = ImagemProduto::all();
-        //$imagens = ImagemProduto::select('foto')->count('produto_id').('imagem_produtos')->groupBy('produto_id')->havingRaw(count(produto_id > 1);
+       // $imagens = ImagemProduto::select('foto')->count('produto_id').('imagem_produtos')->groupBy('produto_id')->havingRaw(count(produto_id > 1)->get();
         //select foto, count(produto_id) from imagem_produtos group by produto_id having count(produto_id) > 1;
         //$imagens = ImagemProduto::select('select foto from imagem_produtos group by produto_id having(count(produto_id) > 1');
         //$imagens = ImagemProduto::groupBy('produto_id')->having(count('produto_id') > 1)->get();
@@ -74,6 +74,8 @@ class ProdutoController extends Controller
         $lng = $output->results[0]->geometry->location->lng;
         $produto->lat = $lat;
         $produto->lng = $lng;
+
+        
 
         $imagem = $req->imagem[0];
         $dir = "img/produtos/";

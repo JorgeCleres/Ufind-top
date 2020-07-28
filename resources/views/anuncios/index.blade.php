@@ -14,17 +14,21 @@
         nome="detalhe"
         titulo="Detalhe"
         classe="modal-dialog modal-xl">
-
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row no-gutters">
-                <div class="col-md-8">
+        <center>
+        <div class="card  " style="max-width: 800px;">
+            <div class="row ">
+                <div class="col-8">
                 <img :src="$store.state.item.imagem" class="card-img" alt="..." >
                 </div>
-                <div class="col-md-8">
+                <div class="col-4">
                 <div class="card-body">
-                    <h5 class="card-title"><strong>@{{$store.state.item.titulo}}</strong></h5>
-                    <p class="card-text">@{{$store.state.item.descricao}}</p>
-                    <p class="card-text"><span>$ </span>@{{$store.state.item.preco}}</p>
+                    <h3 class="card-title"><strong>@{{$store.state.item.titulo}}</strong></h3>
+                    </br>
+                    <h5><strong>Descrição:</strong></h5>
+                    <h4 class="card-text">@{{$store.state.item.descricao}}</h4>
+                    </br>
+                    <h5><strong>Preço:</strong></h5>
+                    <h4 class="card-text"><span>$ </span>@{{$store.state.item.preco}}</h4>
                     <whats
                         :itens="{{json_encode($user)}}"
                     ></whats>
@@ -32,6 +36,7 @@
                 </div>
             </div>
         </div>
+        </center>
     </modal>
 </div>
 @endsection

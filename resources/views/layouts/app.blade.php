@@ -32,6 +32,7 @@
         <menu-nav>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
+                <img src="/img/logo/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

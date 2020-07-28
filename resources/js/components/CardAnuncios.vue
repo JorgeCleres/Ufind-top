@@ -9,13 +9,13 @@
 
         <div class="row row-cols-1 row-cols-md-4">
         <div class="card" v-for="(item, index) in lista" :key="index">
-          <img  :src="item['imagem']" class="card-img-top" alt="imagem não carregou corretamente" style="width:220px;">
+          <img  :src="item['imagem']" class="card-img-top" alt="imagem não carregou corretamente" style="width:100%; height:250px;">
             
             <div class="card-body">
                 <h5 class="card-title titulo"><strong>{{item['titulo']}}</strong></h5>
                 <p class="card-text text">{{item['descricao']}}</p>
                 <p class="preco"><span>R$</span>{{item['preco']}}</p>
-                <div>
+                <div class="col text-center">
                     <a class="btn btn-lg chat" v-bind:href="'chatify/' + item['usuario_id'] ">Chat do anunciante</a>
                     <modal-link  
                         :item="item"
@@ -111,10 +111,12 @@
         margin-left: 0px;
     }
     .card-img-top {
-        max-width: 375px;
+       /* max-width: 375px;
         min-width: 375px;
         max-height: 217px;
-        min-height: 217px;
+        min-height: 217px;*/
+        width: 100%;
+        height: 217px;
         align-self: center;
     }
 

@@ -37,7 +37,7 @@
                     <h4 class="card-text">@{{$store.state.item.descricao}}</h4>
                     </br>
                     <h5><strong>Preço:</strong></h5>
-                    <h4 class="card-text"><span>$ </span>@{{$store.state.item.preco}}</h4>
+                    <h4 class="card-text"><span>R$ </span>@{{$store.state.item.preco}}</h4>
                     <whats
                         :itens="{{json_encode($user)}}"
                     ></whats>

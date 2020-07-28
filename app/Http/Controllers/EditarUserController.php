@@ -9,6 +9,12 @@ use App\User;
 
 class EditarUserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('verified');
+    }
+
     public function index()
     {
         //$id = Auth()->id();

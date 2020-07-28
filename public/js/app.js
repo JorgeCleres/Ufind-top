@@ -8449,7 +8449,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ndiv.body-content{\r\n  /** Essa margem vai evitar que o conteudo fique por baixo do rodapé **/\r\n  margin-bottom: 40px;\n}\nfooter.fixar-rodape{\r\n  border-top: 1px solid #333;\r\n  bottom: 0;\r\n  left: 0;\r\n  height: 40px;\r\n  position: fixed;\r\n  width: 100%;\r\n  color: white;\r\n  background-color: #3490dc;\r\n  text-align: center;\n}\nfooter.footer-copyright {\r\n    background-color: write;\r\n    padding-top: 3px;\r\n    padding-bottom: 3px;\r\n    text-align: center;\n}\r\n", ""]);
+exports.push([module.i, "\n.footer {\r\n  position: fixed;\r\n  left: 0;\r\n  bottom: 0;\r\n  width: 100%;\r\n  height: 70px;\r\n  background-color: #3a3f46;\r\n  color: white;\r\n  text-align: center;\n}\n.footer-copyright {\r\n    background-color: #33373e;\r\n    padding-top: 3px;\r\n    padding-bottom: 3px;\r\n    text-align: center;\n}\n#myFooter ul {\r\n    list-style-type: none;\r\n    padding-left: 0;\r\n    line-height: 1.7;\n}\n#myFooter img {\r\n    width: 30px;\r\n    height: 30px;\n}\n#myFooter .logo img {\r\n    width: 130px;\r\n    height: 60px;\n}\r\n", ""]);
 
 // exports
 
@@ -41646,10 +41646,61 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container body-content" }, [
-      _c("footer", { staticClass: "fixar-rodape navbar" }, [
-        _c("p", { staticClass: "footer-copyright" }, [
-          _vm._v("© 2020 Copyright - Ufind")
+    return _c("div", { staticClass: "footer" }, [
+      _c("div", { attrs: { id: "myFooter" } }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-3" }, [
+            _c("h6", [_vm._v("Início")]),
+            _vm._v(" "),
+            _c("ul", [
+              _c("li", [
+                _c("img", {
+                  attrs: {
+                    src: "https://image.flaticon.com/icons/png/512/25/25694.png"
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-3" }, [
+            _c("h6", [_vm._v("Contato")]),
+            _vm._v(" "),
+            _c("ul", [_c("li", [_vm._v("Email: ufindsystem@gmail.com")])])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-3" }, [
+            _c("h6", [_vm._v("Redes Sociais")]),
+            _vm._v(" "),
+            _c("ul", [
+              _c("li", [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_black-512.png"
+                  }
+                }),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://cdn4.iconfinder.com/data/icons/picons-social/57/38-instagram-3-512.png"
+                  }
+                }),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://cdn3.iconfinder.com/data/icons/picons-social/57/43-twitter-512.png"
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-3 logo" }, [
+            _c("img", { attrs: { src: "/img/logo/logoNome.png" } })
+          ])
         ])
       ])
     ])

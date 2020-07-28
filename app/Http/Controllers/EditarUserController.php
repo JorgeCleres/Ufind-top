@@ -37,8 +37,7 @@ class EditarUserController extends Controller
         $dados['lng'] = $lng;
 
         User::find($id)->update($dados);
-        $registros = User::all();
-        return view('home', compact('registros'));    
-
+        
+        return redirect()->route('home');
     }
 }

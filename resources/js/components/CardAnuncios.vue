@@ -14,7 +14,6 @@
             
             <div class="card-body">
                 <h5 class="card-title titulo"><strong>{{item['titulo']}}</strong></h5>
-                <p class="card-text text">{{item['descricao']}}</p>
                 <p class="preco"><span>R$</span>{{item['preco']}}</p>
                 <div class="col text-center">
                     <a class="btn btn-lg chat" v-bind:href="'chatify/' + item['usuario_id'] ">Chat do anunciante</a>

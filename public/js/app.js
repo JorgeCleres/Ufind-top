@@ -3247,7 +3247,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['itens', 'detalhe', 'modal'],
   data: function data() {
@@ -41087,10 +41086,6 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _c("h5", { staticClass: "card-title titulo" }, [
               _c("strong", [_vm._v(_vm._s(item["titulo"]))])
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text text" }, [
-              _vm._v(_vm._s(item["descricao"]))
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "preco" }, [

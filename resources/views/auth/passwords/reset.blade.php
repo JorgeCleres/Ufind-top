@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8" style="margin: 70px 0">
             <div class="card">
-                <div class="card-header">{{ __('Redefinir senha') }}</div>
+                <div class="card-header" styel="text-align: center !important; font-size: 30px;">{{ __('Redefinir senha') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
@@ -51,7 +51,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="color: white">
                                     {{ __('Redefinir senha') }}
                                 </button>
                             </div>

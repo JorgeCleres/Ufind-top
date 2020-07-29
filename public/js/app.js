@@ -3246,7 +3246,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['itens', 'detalhe', 'modal'],
   data: function data() {
@@ -3255,26 +3254,20 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
-    //lista:funtion está recebendo os itens
     lista: function lista() {
       var _this = this;
 
-      //res é uma variavel
-      //filter é um filtro javascript
       return this.itens.filter(function (res) {
-        //tranformando o res em um array de valores
-        res = Object.values(res); //res pega o valor na posiçao 1 que é itens
-        //indexOf retorna um valor negativo caso não encontre o valor da variavel res (caso res seja falso)
+        res = Object.values(res);
 
         for (var k = 0; k < res.length; k++) {
-          //(res[k] + "") = transforma o valor recebido em javascript
           if ((res[k] + "").toLowerCase().indexOf(_this.buscar.toLowerCase()) >= 0) {
             return true;
           }
         }
 
         return false;
-      }); //return this.itens;
+      });
     }
   }
 });
@@ -3552,64 +3545,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['itens'],
+  props: ['itens', 'users'],
   data: function data() {
     return {
       markers: [],
       place: null,
       center: {
-        lat: '',
-        lng: ''
+        lat: -25.4408155,
+        lng: -49.1544761
       },
       zoom: 10,
       buscar: ''
     };
   },
-  watch: {
-    markers: function markers(_markers) {
-      /*
-      //console.log(this.markers)
-      for(let m of markers){
-      //console.log(m.latLng)
-      }
-      */
-
-      /*
-      if (markers.length != 0){
-         console.log(this.markers)
-          
-         const bounds = new google.maps.LatLngBounds()
-        for (let m of markers) {
-            
-            bounds.extend(m.latLng)
-        }
-        this.$refs.map.fitBounds(bounds)
-      }*/
-    }
-  },
+  watch: {},
   computed: {
-    //lista:funtion está recebendo os itens
-    marker: function marker() {
+    filter: function filter() {
       var _this = this;
 
-      console.log('ola'); //res é uma variavel
-      //filter é um filtro javascript
-
-      return this.itens.filter(function (res) {
-        //tranformando o res em um array de valores
-        res = Object.values(res); //res pega o valor na posiçao 1 que é itens
-        //indexOf retorna um valor negativo caso não encontre o valor da variavel res (caso res seja falso)
-
-        for (var k = 0; k < res.length; k++) {
-          //(res[k] + "") = transforma o valor recebido em javascript
-          if ((res[k] + "").toLowerCase().indexOf(_this.buscar.toLowerCase()) >= 0) {
-            return true;
-          }
-        }
-
-        return false;
-      }); //return this.itens;
+      return !this.buscar.length ? this.itens : this.itens.filter(function (item) {
+        return item.titulo.toLowerCase().includes(_this.buscar.toLowerCase().trim());
+      });
     }
   },
   created: function created() {
@@ -3628,23 +3603,13 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    generate: function generate() {
-      var _this3 = this;
-
-      /*this.zoom = 18;
-      this.center = {
-          lat: parseFloat(item.lat),
-          lng: parseFloat(item.lng)
-      }*/
-      //alert(this.item);
-      console.log(this.itens);
-      this.itens.filter(function (res) {
-        for (var k = 0; k < res.length; k++) {
-          if (data.descricao.indexOf(_this3.buscar) >= 0) {
-            console.log(data.id);
-          }
-        }
-      });
+    toggleInfoWindown: function toggleInfoWindown(marker, index) {
+      $('#titulo').text(marker.titulo);
+      $('.descricao').text(marker.descricao);
+      $('.preco').text('R$' + marker.preco);
+      $('.imagem').attr("src", marker.imagem);
+      $('.usuario_id').attr("href", "chatify/" + marker.usuario_id);
+      $('#myModal').modal();
     }
   }
 });
@@ -8410,7 +8375,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.mapa[data-v-a34c9a20]{\r\n        margin: 100px 50px;\n}\r\n", ""]);
+exports.push([module.i, "\n.mapa[data-v-a34c9a20]{\n    margin: 100px 50px;\n}\n.buscar[data-v-a34c9a20] {\n    margin: 0px -14px;\n    width: 220px;\n}\n.modal-body[data-v-a34c9a20] {\n    display: flex;\n}\n.modal-body img[data-v-a34c9a20] {\n    width: 350px;\n    border: 1px solid black;\n    border-radius: 8px;\n}\n.desc[data-v-a34c9a20] {\n    display: block;\n    width: 355px;\n    word-wrap: break-word;\n    /*overflow: hidden;\n    text-overflow: ellipsis;*/\n}\n#descricao[data-v-a34c9a20] {\n    height: 250px;\n    font-size: 20px;\n    color: #5d5757;\n}\n#imagem[data-v-a34c9a20] {\n    font-size: 30px;\n    color: #2b2b2b;\n}\n#preco[data-v-a34c9a20] {\n    font-size: 30px;\n    color: #2b2b2b;\n}\n.btn[data-v-a34c9a20] {\n    padding: 3px 10px;\n    font-size: 20px;\n    margin: 0px 30px;\n    color: white;\n    height: 40px;\n}\n", ""]);
 
 // exports
 
@@ -41523,7 +41488,8 @@ var render = function() {
           attrs: {
             type: "search",
             placeholder: "Buscar",
-            "aria-label": "Buscar"
+            "aria-label": "Buscar",
+            required: ""
           },
           domProps: { value: _vm.buscar },
           on: {
@@ -41534,22 +41500,10 @@ var render = function() {
               _vm.buscar = $event.target.value
             }
           }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-outline-primary my-2 my-sm-0",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.generate($event)
-              }
-            }
-          },
-          [_vm._v("Buscar")]
-        )
+        })
       ]),
+      _vm._v(" "),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "GmapMap",
@@ -41562,7 +41516,7 @@ var render = function() {
             "map-type-id": "terrain"
           }
         },
-        _vm._l(_vm.markers, function(marker, index) {
+        _vm._l(_vm.filter, function(marker, index) {
           return _c("GmapMarker", {
             key: index,
             attrs: {
@@ -41572,7 +41526,7 @@ var render = function() {
             },
             on: {
               click: function($event) {
-                return _vm.toggleInfoWindown(_vm.m.index)
+                return _vm.toggleInfoWindown(marker, index)
               }
             }
           })
@@ -41583,7 +41537,81 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "myModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("h3", { staticClass: "modal-title", attrs: { id: "titulo" } }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: {
+                    type: "button",
+                    "data-dismiss": "modal",
+                    "aria-label": "Close"
+                  }
+                },
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("×")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body anuncio" }, [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("img", {
+                  staticClass: "imagem",
+                  attrs: { id: "imagem", src: "" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body desc" }, [
+                _c("p", {
+                  staticClass: "descricao",
+                  attrs: { id: "descricao" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("p", { staticClass: "preco", attrs: { id: "preco" } }),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-primary chat usuario_id",
+                      attrs: { href: "", id: "usuario_id", role: "button" }
+                    },
+                    [_vm._v("Chat")]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 

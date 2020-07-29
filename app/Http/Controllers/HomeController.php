@@ -28,8 +28,8 @@ class HomeController extends Controller
         $id = Auth()->id();
         $registros = Produto::where('usuario_id','!=',$id)->get();
         //$registros = Produto::select('lat','lng')->where('usuario_id','=',$id)->get();
-        //$registros = Produto::all();
+        $users = User::where('id','!=',$id)->get();
         
-        return view('home',compact('registros'));
+        return view('home',compact('registros','users'));
     }
 }

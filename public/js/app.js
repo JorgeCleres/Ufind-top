@@ -100412,7 +100412,7 @@ Vue.component('rodape', __webpack_require__(/*! ./components/Rodape.vue */ "./re
 
 Vue.use(vue2_google_maps__WEBPACK_IMPORTED_MODULE_2__, {
   load: {
-    //key: 'AIzaSyAWAkZ64JH2YCr7z6-rhYi13K4Z3uy3Ow0',
+    key: 'AIzaSyAWAkZ64JH2YCr7z6-rhYi13K4Z3uy3Ow0',
     libraries: 'places' // This is required if you use the Autocomplete plugin
 
   }

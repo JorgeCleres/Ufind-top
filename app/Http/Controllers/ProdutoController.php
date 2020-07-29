@@ -18,13 +18,8 @@ class ProdutoController extends Controller
         $id = Auth()->id();
         $registros = Produto::where('usuario_id','=', $id)->get();
         $produto_id = Produto::where('usuario_id','=', $id)->get();
-        //$imagens = ImagemProduto::where('produto_id','=','id')->get();
         $imagens = ImagemProduto::all();
-        //$imagens = ImagemProduto::select('foto')->count('produto_id').('imagem_produtos')->groupBy('produto_id')->havingRaw(count(produto_id > 1);
-        //select foto, count(produto_id) from imagem_produtos group by produto_id having count(produto_id) > 1;
-        //$imagens = ImagemProduto::select('select foto from imagem_produtos group by produto_id having(count(produto_id) > 1');
-        //$imagens = ImagemProduto::groupBy('produto_id')->having(count('produto_id') > 1)->get();
-        //$imagens = ImagemProduto::with('foto')->get();
+
         return view('produtos.index',compact('registros', 'imagens', 'produto_id'));
     }
 
@@ -87,10 +82,7 @@ class ProdutoController extends Controller
            
             $file = $req->allFiles()['imagem'][$i];
             $productImage = new ImagemProduto();
-            //salvando o id do produto na tabela imagemProduto na campo produto_id
             $productImage->produto_id = $produto->id;
-            //dd($productImage->produto_id);
-            //$productImage->foto = $file->store('produtos');
             $dir = "img/produtos/";
             $numRand = rand(1111,9999);
             $extensaoImage = $file->guessClientExtension();
@@ -122,27 +114,8 @@ class ProdutoController extends Controller
         $usuario_id = Auth()->id();
         $req->all();
         $dados = $req->all();
-        //$id = Auth()->id();
-/*
-        $validacao = \Validator::make($dados,[
-            "titulo" => "required",
-            "descricao" => "required",
-            "preco" => "required",
-            "imagem" => "required"
-        ]);
-
-        if($validacao->fails()){
-            return redirect()->back()->withErrors($validacao)->withInput();
-        }
-*/
+        
         $produto = new Produto();
-        /*
-        $produto->titulo = $req->titulo;
-        $produto->descricao = $req->descricao;
-        $produto->preco = $req->preco;
-        $produto->usuario_id = $usuario_id;
-        $dados['usuario_id'] = $usuario_id;
-        */
         $teste = $id;
 
         $rua = Auth()->user()->rua;

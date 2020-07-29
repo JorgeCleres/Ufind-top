@@ -26,10 +26,8 @@ class AnuncioController extends Controller
 
     public function info($id)
     {
-        $registros = Produto::where('id','=',$id)->get();
-        //$registros = Produto::all();
-        //$registro = Produto::find($id);
+        $registros = Produto::where('id','=',$id)->get(); 
         return view('anuncios.info',compact('registros'));
-        //return dd($id);
+
     }
 }

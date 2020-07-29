@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="card" style="margin: 100px 0;">
+                <div class="card-header" style="text-align: center; font-size: 35px; color: #4747ce;">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -81,15 +81,15 @@
                                 
                                 <div class="form-row">
                                     <div class="col text-center">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Registrar') }}
+                                        <button type="submit" class="btn btn-primary" style="color:white">
+                                            Cadastra
                                         </button>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col text-center">
-                                        <button type="reset" class="btn btn-danger">
-                                            {{ __('Limpar') }}
+                                        <button type="reset" class="btn btn-danger" style="color:white">
+                                            Limpar
                                         </button>
                                     </div>
                                 </div>

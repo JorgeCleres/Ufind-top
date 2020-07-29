@@ -16,7 +16,7 @@
                         <div class="col-md-12">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ auth()->user()->name }}" required autocomplete="name" autofocus placeholder="Nome">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ auth()->user()->name }}" required autocomplete="name" autofocus placeholder="Nome" required>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -24,31 +24,31 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" name="tel" id="tel" value="{{ auth()->user()->tel }}" required placeholder="Telefone"  maxlength="15" />
+                                    <input type="text" class="form-control" name="tel" id="tel" value="{{ auth()->user()->tel }}" required placeholder="Telefone"  maxlength="15" required/>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="cep" value="{{ auth()->user()->cep }}" name="cep" size="10" maxlength="9" onblur="pesquisacep(this.value);" pattern="^[0-9]+$" required placeholder="CEP"/>
+                                    <input type="text" class="form-control" id="cep" value="{{ auth()->user()->cep }}" name="cep" size="10" maxlength="9" onblur="pesquisacep(this.value);" pattern="^[0-9]+$" required placeholder="CEP" required/>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="rua" value="{{ auth()->user()->rua }}" name="rua" required placeholder="Rua dos Bobos, nº 0" readonly>
+                                    <input type="text" class="form-control" id="rua" value="{{ auth()->user()->rua }}" name="rua" required placeholder="Rua dos Bobos, nº 0" readonly required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="numero" value="{{ auth()->user()->numero }}" name="numero" pattern="^[a-zA-Z 0-9]+$" required placeholder="nº 0">
+                                    <input type="text" class="form-control" id="numero" value="{{ auth()->user()->numero }}" name="numero" pattern="^[a-zA-Z 0-9]+$" required placeholder="nº 0" required>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="cidade" value="{{ auth()->user()->cidade }}" name="cidade" pattern="^[ a-zA-Z]+$" required placeholder="Cidade" readonly>
+                                    <input type="text" class="form-control" id="cidade" value="{{ auth()->user()->cidade }}" name="cidade" pattern="^[ a-zA-Z]+$" required placeholder="Cidade" readonly required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="text" class="form-control"  id="uf" value="{{ auth()->user()->uf }}" name="uf" pattern="^[ a-zA-Z]+$" required placeholder="Estado" readonly>
+                                    <input type="text" class="form-control"  id="uf" value="{{ auth()->user()->uf }}" name="uf" pattern="^[ a-zA-Z]+$" required placeholder="Estado" readonly required>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="bairro" value="{{ auth()->user()->bairro }}" name="bairro" pattern="^[ a-zA-Z]+$" required placeholder="Bairro" readonly>
+                                    <input type="text" class="form-control" id="bairro" value="{{ auth()->user()->bairro }}" name="bairro" pattern="^[ a-zA-Z]+$" required placeholder="Bairro" readonly required>
                                 </div>
                             </div>
 
